@@ -1,0 +1,58 @@
+import type { Metadata } from "next";
+import { pageUrls } from "@/lib/seo";
+import Image from "next/image";
+import Link from "next/link";
+import { Closing, PageHero } from "@/components/Sections";
+import { APPLICATIONS } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Primjena",
+  description:
+    "Hlađenje nakon operativnih zahvata, nakon ozljeda i nakon fizičkog napora. Cool Down hladi na 7–10 °C i nosi se 2 sata i duže.",
+  ...pageUrls("/primjena"),
+};
+
+export default function Page() {
+  return (
+    // .page-calm: mirniji tretman; .page-primjena: posebnosti stranica primjene.
+    <div className="page-calm page-primjena page-primjena-index">
+      <PageHero
+        crumbs={[{ label: "Primjena" }]}
+        title={
+          // Obavezna poruka; svaka fraza drži svoju točku, pa red ne počinje s „•”.
+          <>
+            <span className="title-part">Nakon operativnih zahvata •</span>{" "}
+            <span className="title-part">Nakon ozljeda •</span>{" "}
+            <span className="title-part">Nakon fizičkog napora</span>
+          </>
+        }
+        lead="Indikacije prema proizvođaču su uganuća, nagnječenja, tupe ozljede i istegnuća udova. Za liječnike i fizioterapeute još i ortopedija nakon operacije, rehabilitacija, regeneracija mišića te bol kod reume i artritisa."
+      />
+      <section className="sect sect--tight-top sect--uses">
+        <div className="wrap">
+          <div className="uses">
+            {APPLICATIONS.map((a) => (
+              <Link key={a.slug} href={`/primjena/${a.slug}`} className="use">
+                <div className="use__img">
+                  <Image
+                    src={a.image}
+                    alt={a.imageAlt}
+                    fill
+                    sizes="(max-width: 820px) 100vw, 58vw"
+                    style={{ objectPosition: a.position }}
+                  />
+                </div>
+                <div>
+                  <h2 className="use__title">{a.title}</h2>
+                  <p className="use__lead">{a.lead}</p>
+                  <span className="textlink">Više o primjeni</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <Closing variant="calm" />
+    </div>
+  );
+}

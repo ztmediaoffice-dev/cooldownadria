@@ -1,0 +1,33 @@
+// Osnovni podaci o stranici.
+// E-mail i pravni podaci su potvrđeni (14.11.2026.). Telefon i WhatsApp još nisu dostavljeni.
+// Dok je `phone` prazan, gumbi za poziv i WhatsApp se ne prikazuju.
+
+type Site = {
+  name: string;
+  url: string;
+  email: string;
+  phone: string;
+  whatsapp: string;
+  delivery: string;
+  company: { name: string; oib: string; address: string };
+  indexable: boolean;
+};
+
+export const SITE: Site = {
+  name: "Cooldown Adria",
+  url: "https://cooldownadria.com",
+  email: "info@cooldownadria.com", // potvrđeno 14.11.2026.
+  phone: "", // npr. "+385 91 000 0000"
+  whatsapp: "", // samo brojke, npr. "385910000000"
+  delivery: "Dostava u Hrvatskoj",
+  // Pravni podaci tvrtke (dostavio Milan, 14.11.2026.).
+  company: {
+    name: "COOL DOWN ADRIA d.o.o. za trgovinu i usluge",
+    oib: "56989887484",
+    address: "Zadarska ulica 7/E, 21300 Makarska",
+  },
+  // Dok je false, stranica ima noindex. Na dan lansiranja postaviti na true.
+  indexable: process.env.NEXT_PUBLIC_INDEXABLE === "true",
+};
+
+export const CLAIM_TEMP = "Hladi na 7–10 °C";
