@@ -5,9 +5,10 @@ import { Closing, PageHero, ProductGrid } from "@/components/Sections";
 import { PARTS_OPTION, SINGLE_ITEMS } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Proizvodi",
+  // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
+  title: "Zavoj za hlađenje: Cool Down setovi",
   description:
-    "PROFESSIONAL SET, FIRST AID SET i FIX AID. ICE FLUID koncentrat, pamučni i fiksirni zavoji. Pošaljite narudžbu ili upit.",
+    "Cool Down zavoj za hlađenje bez leda: PROFESSIONAL SET, FIRST AID SET i FIX AID. ICE FLUID, pamučni i fiksirni zavoji. Cijena na upit, uz uvjete dostave.",
   ...pageUrls("/proizvodi"),
 };
 
@@ -16,8 +17,8 @@ export default function Page() {
     <div className="page-calm">
       <PageHero
         crumbs={[{ label: "Proizvodi" }]}
-        title="Setovi i dijelovi"
-        lead="Svaki set sadrži ICE FLUID koncentrat i zavoje. Cijenu i uvjete dostave šaljemo na upit."
+        title="Cool Down setovi i dijelovi"
+        lead="Svaki set sadrži ICE FLUID koncentrat i pamučni zavoj za hlađenje. Cijenu i uvjete dostave šaljemo na upit."
       />
       <section className="sect sect--tight-top">
         <div className="wrap">

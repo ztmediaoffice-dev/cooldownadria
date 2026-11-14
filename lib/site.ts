@@ -30,4 +30,4 @@ export const SITE: Site = {
   indexable: process.env.NEXT_PUBLIC_INDEXABLE === "true",
 };
 
-export const CLAIM_TEMP = "Hladi na 7–10 °C";
+export const CLAIM_TEMP = "Hladi na 7 do 10 °C";

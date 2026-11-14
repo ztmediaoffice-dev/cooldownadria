@@ -6,9 +6,10 @@ import { TempCurve } from "@/components/TempCurve";
 import { Benefits, Closing, Comparison, PageHero, SectHead } from "@/components/Sections";
 
 export const metadata: Metadata = {
-  title: "Kako djeluje",
+  // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
+  title: "Led ili hladni oblog: kako djeluje Cool Down",
   description:
-    "Cool Down hladi isparavanjem na temperaturi od 7–10 °C. Ne ide u minus, ne stvara ozebline i nosi se 2 sata i duže. Usporedba s ledom i studija proizvođača.",
+    "Led pada prema 0 °C i mora se skidati. Cool Down hladi isparavanjem na 7 do 10 °C, bez ozeblina, 2 sata i duže. Usporedba s ledom i studija proizvođača.",
   ...pageUrls("/kako-djeluje"),
 };
 
@@ -19,7 +20,7 @@ export default function Page() {
       <PageHero
         crumbs={[{ label: "Kako djeluje" }]}
         title="Hladi dugo, a ne prejako."
-        lead="Pamučni zavoj natopljen ICE FLUID-om hladi isparavanjem. Temperatura ostaje na 7–10 °C dok se zavoj ne osuši, pa se može nositi 2 sata i duže."
+        lead="Pamučni zavoj natopljen ICE FLUID-om je hladni oblog koji hladi isparavanjem. Temperatura ostaje na 7 do 10 °C dok se zavoj ne osuši, pa se može nositi 2 sata i duže."
       >
         <div className="actions">
           <Link href="/narudzba" className="btn">
@@ -41,7 +42,7 @@ export default function Page() {
         <div className="wrap split">
           <div>
             <h2 className="h2" id="princip">
-              Princip
+              Kako hladi bez leda
             </h2>
           </div>
           <dl className="factlist">
@@ -51,7 +52,7 @@ export default function Page() {
             </div>
             <div>
               <dt>Na kojoj temperaturi</dt>
-              <dd>Hladi na 7–10 °C. Ne ide u minus, pa ne stvara ozebline.</dd>
+              <dd>Hladi na 7 do 10 °C. Ne ide u minus, pa ne stvara ozebline.</dd>
             </div>
             <div>
               <dt>Koliko dugo</dt>
@@ -75,7 +76,7 @@ export default function Page() {
 
       <section className="sect sect--benefits" aria-labelledby="prednosti">
         <div className="wrap">
-          <SectHead id="prednosti" title="Četiri razloga" />
+          <SectHead id="prednosti" title="Četiri razloga za hlađenje bez leda" />
           <Benefits />
         </div>
       </section>
@@ -84,7 +85,7 @@ export default function Page() {
         <div className="wrap">
           <div className="compare-head">
             <h2 className="h2" id="usporedba">
-              Cool Down ili led
+              Hladni oblog ili led
             </h2>
           </div>
           <Comparison />
@@ -101,8 +102,8 @@ export default function Page() {
           </div>
           <div className="prose">
             <p>
-              Proizvođač je usporedio hlađenje Cool Down zavojem s hlađenjem ledom i hladnim oblogama kod pacijenata
-              nakon operacije.
+              Studija je usporedila Cool Down s hladnim paketom s ledom i s grupom bez hlađenja, kod pacijenata nakon
+              operacije prednjeg križnog ligamenta.
             </p>
             <dl className="factlist">
               <div>
@@ -122,6 +123,18 @@ export default function Page() {
                 <dd>Potrošnja je bila manja.</dd>
               </div>
             </dl>
+            <p>
+              Izvor:{" "}
+              <a
+                href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6579562/"
+                className="textlink"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Engelhard, Hofer i Annaheim, BMJ Open Sport &amp; Exercise Medicine, 2019
+              </a>
+              . Randomizirana studija na 36 pacijenata, 12 u svakoj grupi.
+            </p>
             <p>
               Fizioterapeuti i liječnici mogu detalje studije{" "}
               <Link href="/zahtjev?vrsta=demonstracija" className="textlink">

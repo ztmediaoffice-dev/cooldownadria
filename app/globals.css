@@ -599,20 +599,13 @@ ol {
   letter-spacing: -0.005em;
   max-width: 26em;
 }
-.hero__uses {
-  margin-top: 12px;
-  font-size: 1rem;
+/* Uvod ispod podnaslova: što je proizvod i kako se koristi (SEO, 14.11.2026.). */
+.hero__lead {
+  margin-top: clamp(12px, 1.4vw, 18px);
+  font-size: 1.0625rem;
+  line-height: 1.55;
   color: var(--steel);
-  font-weight: 500;
-}
-/* Fraza ostaje cjelina dok stane u red, a kad ne stane, prelama se unutar sebe. */
-.hero__use {
-  display: inline-block;
-  max-width: 100%;
-}
-.hero__sep {
-  padding-left: 0.4em;
-  padding-right: 0.13em;
+  max-width: 34em;
 }
 .hero .actions {
   margin-top: clamp(28px, 3vw, 40px);

@@ -6,7 +6,9 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kontakt",
-  description: "Pišite nam za pitanja o proizvodu, narudžbi ili suradnji.",
+  // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
+  description:
+    "Kontakt Cooldown Adria, generalnog distributera Cool Down za Hrvatsku i Sloveniju. Pitanja o proizvodu, narudžbi ili suradnji: info@cooldownadria.com.",
   ...pageUrls("/kontakt"),
 };
 

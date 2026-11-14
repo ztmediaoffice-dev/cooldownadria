@@ -3,9 +3,10 @@ import { pageUrls } from "@/lib/seo";
 import { Closing, PageHero, Safety, Steps } from "@/components/Sections";
 
 export const metadata: Metadata = {
-  title: "Upute za primjenu",
+  // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
+  title: "Kako se stavlja hladni oblog Cool Down",
   description:
-    "Kako se stavlja Cool Down: ICE FLUID s vodom u omjeru 1 : 5, pamučni zavoj u jednom sloju prema srcu, preko njega fiksirni zavoj. Kontraindikacije i upozorenja.",
+    "Kako se stavlja hladni oblog Cool Down: ICE FLUID s vodom u omjeru 1 : 5, pamučni zavoj u jednom sloju prema srcu, preko njega fiksirni zavoj. Upozorenja.",
   ...pageUrls("/upute"),
 };
 
@@ -32,7 +33,7 @@ export default function Page() {
       <section className="sect sect--frost">
         <div className="wrap split">
           <div>
-            <h2 className="h2">Detaljno</h2>
+            <h2 className="h2">Omjer, trajanje i ponavljanje</h2>
           </div>
           <dl className="factlist">
             <div>

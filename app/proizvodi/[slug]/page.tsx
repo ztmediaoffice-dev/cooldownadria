@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const p = PRODUCTS.find((x) => x.slug === slug);
   if (!p) return {};
   return {
-    title: p.name,
-    description: `${p.short} ${p.contents.join(", ")}. Hladi na 7–10 °C.`,
+    title: p.seoTitle,
+    description: p.seoDescription,
     alternates: { canonical: `/proizvodi/${p.slug}` },
     openGraph: { url: `/proizvodi/${p.slug}`, images: [{ url: p.image, width: 1080, height: 1080, alt: p.imageAlt }] },
   };
@@ -51,7 +51,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             <div>
               <h1 className="page-title">{p.name}</h1>
               <p className="lead">{p.forWhom}</p>
-              <p className="pd__claim mt-m">Hladi na 7–10 °C</p>
+              <p className="pd__claim mt-m">Hladi na 7 do 10&nbsp;°C</p>
               <dl className="factlist mt-m">
                 <div>
                   <dt>Sadržaj</dt>

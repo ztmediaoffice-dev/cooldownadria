@@ -51,7 +51,7 @@ function Plot({ g, mobile, compact }: { g: Geo; mobile: boolean; compact: boolea
     >
       <title id={`${id}-title`}>Led naspram Cool Down: temperatura obloga kroz vrijeme</title>
       <desc id={`${id}-desc`}>
-        Led naglo pada prema 0 °C i brzo se zagrije. Cool Down hladi na 7–10 °C i drži tu temperaturu 2 sata i duže.
+        Led naglo pada prema 0 °C i brzo se zagrije. Cool Down hladi na 7 do 10 °C i drži tu temperaturu 2 sata i duže.
       </desc>
       {TICKS.map((t) => (
         <g key={t}>
@@ -81,7 +81,7 @@ function Plot({ g, mobile, compact }: { g: Geo; mobile: boolean; compact: boolea
             Led: naglo prema 0 °C i kratko
           </text>
           <text className="curve__label curve__label--cd" x={x(1.98)} y={y(8.35) + 44} textAnchor="end">
-            Cool Down: hladi na 7–10 °C, 2 sata i duže
+            Cool Down: hladi na 7 do 10 °C, 2 sata i duže
           </text>
         </>
       )}
@@ -97,7 +97,10 @@ export function TempCurve({ animate = true, compact = false }: { animate?: boole
       <ul className="curve__legend" aria-hidden="true">
         <li>
           <i className="curve__key curve__key--cd" />
-          Cool Down: hladi na 7–10 °C, 2 sata i duže
+          <span>
+            Cool Down: hladi na <span className="nowrap">7 do 10 °C</span>,{" "}
+            <span className="nowrap">2 sata i duže</span>
+          </span>
         </li>
         <li>
           <i className="curve__key curve__key--ice" />
@@ -105,7 +108,7 @@ export function TempCurve({ animate = true, compact = false }: { animate?: boole
         </li>
       </ul>
       <figcaption className="note">
-        Ilustracija, nije mjerenje. Cool Down hladi na temperaturi od 7–10 °C i ne ide u minus, pa ne stvara ozebline.
+        Ilustracija, nije mjerenje. Cool Down hladi na temperaturi od 7 do 10 °C i ne ide u minus, pa ne stvara ozebline.
       </figcaption>
     </figure>
   );

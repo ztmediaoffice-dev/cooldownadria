@@ -210,7 +210,7 @@ export function InquiryForm({
 
       <div className="field">
         <p className="field__hint" id="contact-hint">
-          Unesite e-mail ili telefon — dovoljan je jedan kontakt.
+          Unesite e-mail ili telefon. Dovoljan je jedan kontakt.
         </p>
         <div className="form__row">
           <div className="field">

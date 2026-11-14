@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const a = APPLICATIONS.find((x) => x.slug === slug);
   if (!a) return {};
   return {
-    title: `Hlađenje ${a.title.toLowerCase()}`,
-    description: a.lead,
+    title: a.seoTitle,
+    description: a.seoDescription,
     ...pageUrls(`/primjena/${a.slug}`),
   };
 }
@@ -54,7 +54,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <section className="sect">
         <div className="wrap split">
           <div>
-            <h2 className="h2">Što trebate znati</h2>
+            <h2 className="h2">{a.bodyTitle}</h2>
           </div>
           <div className="prose">
             {a.body.map((p) => (

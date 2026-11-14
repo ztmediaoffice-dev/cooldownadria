@@ -6,8 +6,10 @@ import { ORDER_OPTIONS, PARTS_OPTION } from "@/lib/content";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Pošaljite narudžbu ili upit",
-  description: "Naručite Cool Down set. Javit ćemo vam se s cijenom i uvjetima dostave.",
+  // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
+  title: "Cool Down cijena i narudžba",
+  description:
+    "Naručite Cool Down set. Cijenu i uvjete dostave šaljemo na upit, a narudžbu potvrđujete tek tada.",
   ...pageUrls("/narudzba"),
 };
 

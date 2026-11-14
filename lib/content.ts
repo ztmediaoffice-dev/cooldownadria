@@ -10,6 +10,9 @@ export type Product = {
   imageAlt: string;
   contents: string[];
   uses?: string;
+  // SEO (14.11.2026., SEO-KLJUCNE-RIJECI.md): naslov za Google i meta opis.
+  seoTitle: string;
+  seoDescription: string;
 };
 
 export const PRODUCTS: Product[] = [
@@ -28,6 +31,9 @@ export const PRODUCTS: Product[] = [
       "Mješalica 1800 ml",
     ],
     uses: "oko 40 primjena",
+    seoTitle: "Cool Down PROFESSIONAL SET za klubove",
+    seoDescription:
+      "Za fizioterapeute, klubove i oporavak nakon operacije: ICE FLUID 250 ml (oko 40 primjena), 2 pamučna zavoja, fiksirni zavoj i mješalica. Hladi na 7 do 10 °C.",
   },
   {
     slug: "first-aid-set",
@@ -43,6 +49,9 @@ export const PRODUCTS: Product[] = [
       "Posuda 400 ml",
     ],
     uses: "oko 15 primjena",
+    seoTitle: "Cool Down FIRST AID SET za prvu pomoć",
+    seoDescription:
+      "Hladni oblog za kućnu ljekarnu, sportsku torbu i prvu pomoć nakon ozljede: ICE FLUID 100 ml (oko 15 primjena), pamučni i fiksirni zavoj te posuda.",
   },
   {
     slug: "fix-aid",
@@ -52,6 +61,9 @@ export const PRODUCTS: Product[] = [
     image: "/img/proizvodi/fix-aid.jpg",
     imageAlt: "FIX AID: vrećica s gotovim natopljenim zavojem",
     contents: ["Gotov natopljeni zavoj 10 cm × 1,5 m"],
+    seoTitle: "Cool Down FIX AID, gotov hladni oblog",
+    seoDescription:
+      "Gotov natopljeni zavoj za hlađenje, 10 cm × 1,5 m. Otvori, omotaj, gotovo: bez miješanja, na terenu, u autu ili na putu. Hladi na 7 do 10 °C.",
   },
 ];
 
@@ -86,6 +98,10 @@ export type Application = {
   position: string;
   body: string[];
   recommended: string;
+  // SEO (14.11.2026., SEO-KLJUCNE-RIJECI.md): naslov za Google, meta opis i naslov sekcije s tekstom.
+  seoTitle: string;
+  seoDescription: string;
+  bodyTitle: string;
 };
 
 export const APPLICATIONS: Application[] = [
@@ -102,20 +118,28 @@ export const APPLICATIONS: Application[] = [
       "Svježe rane se prije primjene prekriju folijom. Na otvorenu ranu Cool Down se ne stavlja.",
     ],
     recommended: "professional-set",
+    seoTitle: "Hladni oblog nakon operacije, bez leda",
+    seoDescription:
+      "Hladni oblog koji pacijent nakon operacije nosi kod kuće, bez leda iz zamrzivača i bez ozeblina. Hladi na 7 do 10 °C. Nakon operacije hladi se 2 do 3 puta dnevno.",
+    bodyTitle: "Hlađenje kod kuće nakon operacije",
   },
   {
     slug: "nakon-ozljeda",
     title: "Nakon ozljeda",
-    lead: "Uganuće, nagnječenje, istegnuće ili tupa ozljeda: hlađenje je spremno odmah, na terenu ili kod kuće.",
+    lead: "Uganuće gležnja, nagnječenje, istegnuće ili tupa ozljeda: hladni oblog je spreman odmah, na terenu ili kod kuće.",
     image: "/img/foto/nakon-ozljede.jpg",
     imageAlt: "Sportaš sjedi na atletskoj stazi, a druga osoba mu pridržava koljeno.",
     position: "30% 50%",
     body: [
       "Indikacije prema proizvođaču su uganuća, nagnječenja, tupe ozljede i istegnuća udova.",
       "ICE FLUID ne treba hladnjak ni zamrzivač. Pomiješa se s vodom, natopi zavoj i omota. FIX AID je već natopljen.",
-      "Zavoj hladi na 7–10 °C i ne ide u minus, pa ne stvara ozebline kao led.",
+      "Zavoj hladi na 7 do 10 °C i ne ide u minus, pa ne stvara ozebline kao led.",
     ],
     recommended: "first-aid-set",
+    seoTitle: "Hladni oblog za uganuće gležnja i ozljede",
+    seoDescription:
+      "Uganuće gležnja, nagnječenje, istegnuće ili tupa ozljeda: Cool Down hladni oblog je spreman odmah, bez zamrzivača. Hladi na 7 do 10 °C i ne stvara ozebline.",
+    bodyTitle: "Hladni oblog za uganuće i udarac",
   },
   {
     slug: "nakon-fizickog-napora",
@@ -130,13 +154,17 @@ export const APPLICATIONS: Application[] = [
       "Jedna boca od 250 ml dovoljna je za oko 40 primjena, što je važno za klubove s puno igrača.",
     ],
     recommended: "professional-set",
+    seoTitle: "Hladni oblozi za sportaše nakon napora",
+    seoDescription:
+      "Hladni oblog za sportaše i klubove, u svlačionici ili kod kuće. Nosi se 2 sata i duže i ne ograničava kretanje. Boca od 250 ml dovoljna je za oko 40 primjena.",
+    bodyTitle: "Za sportaše i klubove",
   },
 ];
 
 export const BENEFITS = [
   {
     title: "Ne stvara ozebline",
-    text: "Hladi na 7–10 °C i ne ide u minus. Led pada prema 0 °C i zato se mora skidati.",
+    text: "Hladi na 7 do 10 °C i ne ide u minus. Led pada prema 0 °C i zato se mora skidati.",
     source: false,
   },
   {
@@ -157,7 +185,7 @@ export const BENEFITS = [
 ];
 
 export const COMPARISON = [
-  { row: "Temperatura", cd: "Hladi na 7–10 °C", ice: "Pada prema 0 °C" },
+  { row: "Temperatura", cd: "Hladi na 7 do 10 °C", ice: "Pada prema 0 °C" },
   { row: "Ozebline", cd: "Ne stvara ozebline", ice: "Rizik ako se drži predugo" },
   { row: "Trajanje", cd: "2 sata i duže", ice: "Kratko, uz pauze" },
   { row: "Priprema", cd: "Spreman odmah, bez zamrzivača", ice: "Treba zamrzivač" },
@@ -247,11 +275,11 @@ export const FAQ = [
   {
     id: "led",
     q: "Je li ovo isto kao led?",
-    a: "Nije. Led hladi naglo i pada prema 0 °C, pa se mora skidati. Cool Down hladi na 7–10 °C, ne ide u minus i ne stvara ozebline. Zato se može nositi 2 sata i duže.",
+    a: "Nije. Led hladi naglo i pada prema 0 °C, pa se mora skidati. Cool Down hladi na 7 do 10 °C, ne ide u minus i ne stvara ozebline. Zato se može nositi 2 sata i duže.",
   },
   {
     id: "trajanje",
-    q: "Koliko dugo se nosi?",
+    q: "Koliko dugo se nosi hladni oblog?",
     a: "2 sata i duže. Zavoj hladi dok se ne osuši. Hlađenje se može ponavljati koliko treba, a nakon operacije 2 do 3 puta dnevno.",
   },
   {
@@ -278,6 +306,12 @@ export const FAQ = [
     id: "sastav",
     q: "Što je u boci?",
     a: "ICE FLUID je koncentrat koji se miješa s vodom u omjeru 1 : 5. Sadrži mentol i kamfor i ne isušuje kožu. Lako je zapaljiv, pa ga čuvajte dalje od topline.",
+  },
+  {
+    // Dodano 14.11.2026. (ljudi pretražuju „gel za hlađenje” i „cool down gel”); samo činjenice iz uputa.
+    id: "gel",
+    q: "Je li Cool Down gel?",
+    a: "Nije. ICE FLUID je tekući koncentrat. Pomiješa se s vodom u omjeru 1 : 5, njime se natopi pamučni zavoj, a preko njega ide fiksirni zavoj.",
   },
   {
     id: "kupnja",

@@ -6,7 +6,6 @@ import {
   Closing,
   Comparison,
   Faq,
-  PartnerBand,
   References,
   SectHead,
   SportProof,
@@ -19,13 +18,20 @@ import { APPLICATIONS } from "@/lib/content";
 import type { Metadata } from "next";
 import { pageUrls } from "@/lib/seo";
 
-// Naslov i opis dolaze iz layouta; ovdje se dodaju samo canonical i og:url.
-export const metadata: Metadata = { ...pageUrls("/") };
+// SEO naslov i opis početne (ključna riječ „hladni oblozi”, vidi SEO-KLJUCNE-RIJECI.md, odobrio korisnik 14.11.2026.).
+// Bez en i em crtica u novim tekstovima (odluka korisnika 14.11.2026.).
+export const metadata: Metadata = {
+  title: { absolute: "Cool Down hladni oblozi: hlađenje bez leda | Cooldown Adria" },
+  description:
+    "Cool Down je hladni oblog bez leda i zamrzivača: pamučni zavoj s ICE FLUID-om hladi na 7 do 10 °C i nosi se 2 sata i duže. Nakon operacije, ozljede ili napora.",
+  ...pageUrls("/"),
+};
 
 export default function Home() {
   return (
     <>
-      {/* 1. Hero: redoslijed u HTML-u je naslov, video, primjene i akcije (tako ide i na mobitelu) */}
+      {/* 1. Hero: redoslijed u HTML-u je naslov s uvodom, video i akcije (tako ide i na mobitelu).
+          Obavezna poruka o primjeni je u uvodu kao rečenica (gerilsko testiranje, 14.11.2026.). */}
       <section className="hero">
         <div className="wrap">
           <div className="hero__grid">
@@ -36,23 +42,17 @@ export default function Home() {
                 bez leda.
               </h1>
               <p className="hero__sub">Ciljano hlađenje za podršku oporavku.</p>
+              <p className="hero__lead">
+                Cool Down je hladni oblog koji ne treba zamrzivač, za hlađenje nakon operativnih zahvata, nakon
+                ozljeda i nakon fizičkog napora. ICE FLUID pomiješate s vodom, natopite pamučni zavoj i omotate
+                koljeno, gležanj ili rame. Zavoj se nosi 2 sata i duže i ne ograničava pokrete.
+              </p>
             </div>
             <div className="hero__visual">
               <HeroVideo />
-              <p className="hero__note">Hladi na 7–10 °C.</p>
+              <p className="hero__note">Hladi na 7 do 10&nbsp;°C.</p>
             </div>
             <div className="hero__more">
-              <p className="hero__uses">
-                <span className="hero__use">
-                  Nakon operativnih zahvata<span className="hero__sep" aria-hidden="true">•</span>
-                </span>
-                <span className="sr-only">,</span>{" "}
-                <span className="hero__use">
-                  Nakon ozljeda<span className="hero__sep" aria-hidden="true">•</span>
-                </span>
-                <span className="sr-only">,</span>{" "}
-                <span className="hero__use">Nakon fizičkog napora</span>
-              </p>
               <div className="actions" data-mobilebar-hide>
                 <Link href="/narudzba" className="btn">
                   Naručite svoj set
@@ -102,7 +102,7 @@ export default function Home() {
           <div className="path__panel">
             <p className="path__who">Za vas i vašu obitelj</p>
             <p className="path__title">Hlađenje kod kuće, na terenu i nakon operacije</p>
-            <p className="path__text">Bez zamrzivača i bez ozeblina. Zavoj stavite i skinete sami.</p>
+            <p className="path__text">Hladni oblog bez zamrzivača i bez ozeblina. Zavoj stavite i skinete sami.</p>
             <div className="actions">
               <span className="btn btn--light">Naručite svoj set</span>
             </div>
@@ -115,7 +115,7 @@ export default function Home() {
           <div className="path__panel">
             <p className="path__who">Za fizioterapeute, klubove, klinike i ljekarne</p>
             <p className="path__title">Hlađenje koje pacijent nastavlja kod kuće</p>
-            <p className="path__text">Pokažemo vam ga uživo i dogovorimo model suradnje koji vam odgovara.</p>
+            <p className="path__text">Dolazimo na demonstraciju u vašu ordinaciju ili klub i zajedno biramo model suradnje.</p>
             <div className="actions">
               <span className="btn">Zatražite demonstraciju</span>
             </div>
@@ -153,7 +153,7 @@ export default function Home() {
         <div className="wrap">
           <SectHead
             id="koraci"
-            title="Šest koraka do hlađenja"
+            title="Kako se stavlja: šest koraka"
             lead="ICE FLUID se miješa s vodom. Pamučni zavoj se natopi i omota, a preko njega ide fiksirni zavoj."
           />
           <StepPlayer />
@@ -169,7 +169,7 @@ export default function Home() {
       <section className="sect sect--tight-top sect--uses" aria-labelledby="primjena">
         <div className="wrap">
           <h2 className="sr-only" id="primjena">
-            Primjena
+            Hladni oblozi nakon operacije, ozljeda i napora
           </h2>
           <div className="uses">
             {APPLICATIONS.map((a) => (
@@ -205,9 +205,6 @@ export default function Home() {
           <ProductChooser />
         </div>
       </section>
-
-      {/* 8. Partneri */}
-      <PartnerBand />
 
       {/* 9. Vrhunski sport i reference */}
       <section className="sect sect--refs" aria-label="Reference">

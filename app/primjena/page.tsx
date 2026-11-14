@@ -6,9 +6,10 @@ import { Closing, PageHero } from "@/components/Sections";
 import { APPLICATIONS } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Primjena",
+  // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
+  title: "Primjena hladnog obloga Cool Down",
   description:
-    "Hlađenje nakon operativnih zahvata, nakon ozljeda i nakon fizičkog napora. Cool Down hladi na 7–10 °C i nosi se 2 sata i duže.",
+    "Hladni oblog nakon operativnih zahvata, nakon ozljeda i nakon fizičkog napora. Cool Down hladi na 7 do 10 °C i nosi se 2 sata i duže.",
   ...pageUrls("/primjena"),
 };
 

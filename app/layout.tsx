@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Cooldown Adria",
   },
   description:
-    "Ciljano hlađenje za podršku oporavku. Cool Down hladi na 7–10 °C, ne stvara ozebline i nosi se 2 sata i duže. Nakon operativnih zahvata, ozljeda i fizičkog napora.",
+    "Ciljano hlađenje za podršku oporavku. Cool Down hladi na 7 do 10 °C, ne stvara ozebline i nosi se 2 sata i duže. Nakon operativnih zahvata, ozljeda i fizičkog napora.",
   applicationName: "Cooldown Adria",
   openGraph: OG_BASE,
   robots: SITE.indexable ? { index: true, follow: true } : { index: false, follow: false },

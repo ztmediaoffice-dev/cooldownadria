@@ -3,8 +3,10 @@ import { pageUrls } from "@/lib/seo";
 import { Closing, PageHero, References } from "@/components/Sections";
 
 export const metadata: Metadata = {
-  title: "O nama",
-  description: "Cooldown Adria je generalni distributer švicarskog proizvođača Cool Down AG za Hrvatsku i Sloveniju.",
+  // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
+  title: { absolute: "Cool Down Hrvatska i Slovenija | Cooldown Adria" },
+  description:
+    "Cooldown Adria je generalni distributer švicarskog proizvođača Cool Down AG za Hrvatsku i Sloveniju: prodaja, demonstracije i podrška partnerima i kupcima.",
   ...pageUrls("/o-nama"),
 };
 
@@ -52,8 +54,8 @@ export default function Page() {
           </div>
           <div className="prose">
             <p>
-              Za Hrvatsku i Sloveniju vodimo prodaju, demonstracije i podršku partnerima i kupcima. Fizioterapeutima,
-              klubovima, klinikama i ljekarnama pokazujemo proizvod uživo, a kupcima pomažemo odabrati pravi set.
+              Za Hrvatsku i Sloveniju vodimo prodaju, demonstracije i podršku partnerima i kupcima. Za fizioterapeute,
+              klubove, klinike i ljekarne organiziramo demonstracije, a kupcima pomažemo odabrati pravi set.
             </p>
           </div>
         </div>

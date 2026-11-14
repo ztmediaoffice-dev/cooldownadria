@@ -5,7 +5,6 @@ import {
   BENEFITS,
   COMPARISON,
   FAQ,
-  PARTNER_MODELS,
   PRODUCTS,
   REFERENCES,
   SAFETY,
@@ -77,7 +76,7 @@ export function Benefits() {
       {BENEFITS.map((b) => (
         <li className="benefit" key={b.title}>
           <h3 className="benefit__title">{b.title}</h3>
-          <p className="benefit__text">{b.text}</p>
+          <p className="benefit__text">{keepRanges(b.text)}</p>
           {b.source ? (
             <Link href="/kako-djeluje#studija" className="source">
               Prema proizvođaču
@@ -121,7 +120,7 @@ export function Comparison() {
               <span className="compare__lbl" aria-hidden="true">
                 Cool Down:{" "}
               </span>
-              {r.cd}
+              {keepRanges(r.cd)}
             </td>
             <td className="ice" role="cell">
               <span className="compare__lbl" aria-hidden="true">
@@ -236,39 +235,6 @@ export function ProductGrid() {
   );
 }
 
-export function PartnerBand() {
-  return (
-    <section className="sect sect--ink sect--partners" aria-labelledby="partneri">
-      <div className="wrap">
-        <div className="sect-head">
-          <h2 className="h2" id="partneri">
-            Za fizioterapeute, klubove i klinike
-          </h2>
-          <p className="lead">
-            Pokažemo vam Cool Down uživo, u vašoj ordinaciji ili klubu. Vi birate kako ga uvodite.
-          </p>
-        </div>
-        <ul className="models">
-          {PARTNER_MODELS.map((m) => (
-            <li className="model" key={m.title}>
-              <h3 className="model__title">{m.title}</h3>
-              <p className="model__text">{m.text}</p>
-            </li>
-          ))}
-        </ul>
-        <div className="actions partners__actions">
-          <Link href="/zahtjev" className="btn btn--light">
-            Zatražite demonstraciju
-          </Link>
-          <Link href="/za-partnere" className="btn btn--ghost-light">
-            Sve o suradnji
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function References({
   title = "Koriste ga profesionalci",
   lead = "Sportski timovi i klinike u Švicarskoj i Njemačkoj, prema proizvođaču.",
@@ -309,8 +275,8 @@ export function References({
   );
 }
 
-// Raspon temperature ("7–10 °C") ne smije se prelomiti preko crtice.
-const RANGE = /(\d+–\d+\s°C)/;
+// Raspon temperature ("7 do 10 °C", ranije "7–10 °C") ne smije se prelomiti u dva reda.
+const RANGE = /(\d+(?:–| do )\d+\s°C)/;
 function keepRanges(text: string) {
   return text.split(RANGE).map((part, i) =>
     RANGE.test(part) ? (

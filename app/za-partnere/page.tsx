@@ -7,9 +7,10 @@ import { PageHero, References } from "@/components/Sections";
 import { PARTNER_MODELS, PARTNER_SEGMENTS } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Za poslovne partnere",
+  // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
+  title: "Hladni oblozi za fizioterapeute i klubove",
   description:
-    "Za fizioterapeute, sportske klubove, klinike, ljekarne i teretane. Zatražite demonstraciju, uzorak ili poslovnu ponudu za Cool Down.",
+    "Cool Down za fizioterapeute, sportske klubove, klinike, ljekarne i teretane. Zatražite demonstraciju, uzorak ili poslovnu ponudu za hlađenje bez leda.",
   ...pageUrls("/za-partnere"),
 };
 
@@ -20,7 +21,7 @@ export default function Page() {
       <PageHero
         crumbs={[{ label: "Za partnere" }]}
         title="Hlađenje koje pacijent nastavlja kod kuće."
-        lead="Cool Down je nov na hrvatskom tržištu. Pokažemo vam ga uživo, u vašoj ordinaciji, klubu ili ljekarni, i dogovorimo model suradnje koji vam odgovara."
+        lead="Cool Down je nov na hrvatskom tržištu. Demonstraciju održavamo kod vas, u ordinaciji, klubu ili ljekarni, a model suradnje dogovaramo prema vašim potrebama."
       >
         <div className="actions">
           {/* Donja traka se pojavljuje tek kad je ovaj CTA prošao (postojeći mehanizam MobileBar). */}
@@ -91,7 +92,7 @@ export default function Page() {
           <dl className="factlist">
             <div>
               <dt>Demonstraciju</dt>
-              <dd>Pokažemo primjenu na licu mjesta, vama i vašem timu.</dd>
+              <dd>Primjenu demonstriramo na licu mjesta, vama i vašem timu.</dd>
             </div>
             <div>
               <dt>Uzorak</dt>
