@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { PRODUCTS } from "@/lib/content";
+import { SocialLinks } from "@/components/SocialLinks";
 
 export function Footer() {
   return (
@@ -15,6 +16,7 @@ export function Footer() {
             <p className="footer__about">
               Generalni distributer švicarskog proizvođača Cool Down AG za Hrvatsku i Sloveniju.
             </p>
+            <SocialLinks className="social footer__social" />
           </div>
           <div>
             <h2>Proizvodi</h2>

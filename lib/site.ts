@@ -31,3 +31,12 @@ export const SITE: Site = {
 };
 
 export const CLAIM_TEMP = "Hladi na 7 do 10 °C";
+
+// Profili na mrežama (potvrdio korisnik 15.11.2026.). Prikazuju se u footeru.
+export const SOCIAL = [
+  { id: "facebook", name: "Facebook", url: "https://www.facebook.com/cooldownadria" },
+  { id: "instagram", name: "Instagram", url: "https://www.instagram.com/cooldownadria" },
+  { id: "linkedin", name: "LinkedIn", url: "https://www.linkedin.com/company/cooldownadria" },
+  { id: "x", name: "X", url: "https://x.com/cooldownadria" },
+  { id: "youtube", name: "YouTube", url: "https://www.youtube.com/@cooldownadria" },
+] as const;

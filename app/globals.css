@@ -2025,6 +2025,28 @@ ol {
 .footer__static {
   color: var(--on-ink-2);
 }
+/* Ikone mreža: dodirna površina 44 px, razmak 4 px. */
+.footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 20px;
+  margin-left: -12px;
+}
+.footer .footer__social li + li {
+  margin-top: 0;
+}
+.footer__social a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  color: #fff;
+}
+.footer__social a:hover {
+  color: var(--ice);
+}
 /* Granice footera su container queries u rem, pa raspored prati stvarnu veličinu
    fonta (i postavku preglednika i osnovni font stranice). Pri normalnom fontu
    odgovaraju ekranima od 1180, 1000 i 720 px (širina sadržaja bez rubova). */
