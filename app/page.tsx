@@ -66,16 +66,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 1a. Led naspram Cool Down */}
-      <section className="curve-sect" aria-labelledby="krivulja-naslov">
+      {/* 7. Proizvodi */}
+      <section className="sect sect--frost sect--products" aria-labelledby="proizvodi">
         <div className="wrap">
-          <div className="curve-sect__head">
-            <h2 className="curve-sect__title" id="krivulja-naslov">
-              Led naspram Cool Down
-            </h2>
-            <p className="curve-sect__lead">Kako se temperatura obloge mijenja tijekom tri sata.</p>
-          </div>
-          <TempCurve />
+          <SectHead
+            id="proizvodi"
+            title="Odaberite svoj set"
+            lead="Cijenu i uvjete dostave šaljemo na upit. Ako niste sigurni koji set trebate, pomoći ćemo vam odabrati."
+          />
+          <ProductChooser />
         </div>
       </section>
 
@@ -194,15 +193,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Proizvodi */}
-      <section className="sect sect--frost sect--products" aria-labelledby="proizvodi">
+      {/* 1a. Led naspram Cool Down */}
+      <section className="curve-sect" aria-labelledby="krivulja-naslov">
         <div className="wrap">
-          <SectHead
-            id="proizvodi"
-            title="Odaberite svoj set"
-            lead="Cijenu i uvjete dostave šaljemo na upit. Ako niste sigurni koji set trebate, pomoći ćemo vam odabrati."
-          />
-          <ProductChooser />
+          <div className="curve-sect__head">
+            <h2 className="curve-sect__title" id="krivulja-naslov">
+              Led naspram Cool Down
+            </h2>
+            <p className="curve-sect__lead">Kako se temperatura obloge mijenja tijekom tri sata.</p>
+          </div>
+          <TempCurve />
         </div>
       </section>
 
