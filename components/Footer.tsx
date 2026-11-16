@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE } from "@/lib/site";
+import { SITE, waLink } from "@/lib/site";
 import { PRODUCTS } from "@/lib/content";
 import { SocialLinks } from "@/components/SocialLinks";
 
@@ -67,6 +67,13 @@ export function Footer() {
               {SITE.phone ? (
                 <li>
                   <a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>{SITE.phone}</a>
+                </li>
+              ) : null}
+              {SITE.whatsapp ? (
+                <li>
+                  <a href={waLink()} rel="noopener" target="_blank">
+                    WhatsApp
+                  </a>
                 </li>
               ) : null}
               <li>

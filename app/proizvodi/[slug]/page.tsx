@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { Closing, Crumbs, ProductCard, Safety, Steps, orderCta } from "@/components/Sections";
 import { PRODUCTS } from "@/lib/content";
 import { Advantages } from "@/components/Advantages";
-import { SITE } from "@/lib/site";
+import { SITE, waLink } from "@/lib/site";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -91,6 +91,18 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                   Zatražite demonstraciju
                 </Link>
               </div>
+              {SITE.whatsapp ? (
+                <p className="mt-s">
+                  <a
+                    className="textlink"
+                    href={waLink(`Pozdrav, želim naručiti Cool Down ${p.name}.`)}
+                    rel="noopener"
+                    target="_blank"
+                  >
+                    Ili naručite preko WhatsAppa
+                  </a>
+                </p>
+              ) : null}
               <div className="mt-l">
                 <Safety heading="h2" />
               </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { pageUrls } from "@/lib/seo";
 import { InquiryForm } from "@/components/InquiryForm";
 import { PageHero } from "@/components/Sections";
-import { SITE } from "@/lib/site";
+import { SITE, waLink } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kontakt",
@@ -37,7 +37,7 @@ export default function Page() {
             ) : null}
             {SITE.whatsapp ? (
               <p>
-                <a className="btn btn--ghost" href={`https://wa.me/${SITE.whatsapp}`} rel="noopener" target="_blank">
+                <a className="btn btn--ghost" href={waLink("Pozdrav, imam pitanje o Cool Downu.")} rel="noopener" target="_blank">
                   Pišite na WhatsApp
                 </a>
               </p>

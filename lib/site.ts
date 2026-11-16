@@ -1,5 +1,5 @@
 // Osnovni podaci o stranici.
-// E-mail i pravni podaci su potvrđeni (14.11.2026.). Telefon je dostavljen 15.11.2026. (isti kao na Google profilu); WhatsApp nije potvrđen.
+// E-mail i pravni podaci su potvrđeni (14.11.2026.). Telefon je dostavljen 15.11.2026. (isti kao na Google profilu); WhatsApp na istom broju potvrđen 16.11.2026.
 // Dok je `phone` prazan, gumbi za poziv i WhatsApp se ne prikazuju.
 
 type Site = {
@@ -18,7 +18,7 @@ export const SITE: Site = {
   url: "https://cooldownadria.com",
   email: "info@cooldownadria.com", // potvrđeno 14.11.2026.
   phone: "+385 91 217 4000", // 15.11.2026., isti broj kao na Google Business Profilu
-  whatsapp: "", // samo brojke, npr. "385910000000"
+  whatsapp: "385912174000", // 16.11.2026., isti broj kao telefon; korisnik je potvrdio da ima WhatsApp
   delivery: "Dostava u Hrvatskoj",
   // Pravni podaci tvrtke (dostavio Milan, 14.11.2026.).
   company: {
@@ -40,3 +40,9 @@ export const SOCIAL = [
   { id: "x", name: "X", url: "https://x.com/cooldownadria" },
   { id: "youtube", name: "YouTube", url: "https://www.youtube.com/@cooldownadria" },
 ] as const;
+
+// Link za WhatsApp s unaprijed upisanom porukom (kupac je može izmijeniti prije slanja).
+export function waLink(text?: string) {
+  const base = `https://wa.me/${SITE.whatsapp}`;
+  return text ? `${base}?text=${encodeURIComponent(text)}` : base;
+}

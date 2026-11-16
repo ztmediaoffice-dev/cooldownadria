@@ -3,7 +3,7 @@ import { pageUrls } from "@/lib/seo";
 import { InquiryForm } from "@/components/InquiryForm";
 import { PageHero } from "@/components/Sections";
 import { ORDER_OPTIONS, PARTS_OPTION } from "@/lib/content";
-import { SITE } from "@/lib/site";
+import { SITE, waLink } from "@/lib/site";
 
 export const metadata: Metadata = {
   // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
@@ -35,6 +35,22 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
               <strong>Što slijedi:</strong> pregledamo upit i javimo se e-mailom ili telefonom s cijenom i dostavom.
             </p>
             <p>{SITE.delivery}.</p>
+            {SITE.whatsapp ? (
+              <p>
+                <a
+                  className="btn btn--ghost"
+                  href={waLink(
+                    parts
+                      ? "Pozdrav, zanimaju me pojedinačni dijelovi za Cool Down."
+                      : `Pozdrav, želim naručiti Cool Down ${product ?? "set"}.`,
+                  )}
+                  rel="noopener"
+                  target="_blank"
+                >
+                  Naručite preko WhatsAppa
+                </a>
+              </p>
+            ) : null}
             <p>
               Radije pišete? <a className="textlink" href={`mailto:${SITE.email}`}>{SITE.email}</a>
             </p>
