@@ -4,7 +4,6 @@ import { TempCurve } from "@/components/TempCurve";
 import {
   Benefits,
   Closing,
-  Comparison,
   Faq,
   References,
   SectHead,
@@ -26,6 +25,17 @@ export const metadata: Metadata = {
     "Cool Down je hladni oblog bez leda i zamrzivača: pamučni zavoj s ICE FLUID-om hladi na 7 do 10 °C i nosi se 2 sata i duže. Nakon operacije, ozljede ili napora.",
   ...pageUrls("/"),
 };
+
+const LOGOS = [
+  { mh: 34, file: "swiss-cycling", name: "Swiss Cycling", w: 480, h: 184 },
+  { mh: 46, file: "hockey-deutschland", name: "Njemačka hokejaška reprezentacija (Deutscher Hockey-Bund)", w: 365, h: 200 },
+  { mh: 44, file: "thoemus-maxon", name: "Thömus maxon", w: 480, h: 197 },
+  { mh: 34, file: "scott-sram", name: "SCOTT-SRAM MTB", w: 480, h: 124 },
+  { mh: 54, file: "spital-muri", name: "Spital Muri", w: 239, h: 200 },
+  { mh: 44, file: "altius", name: "ALTIUS Swiss Sportmed Center", w: 459, h: 200 },
+  { mh: 44, file: "orthopaedie-st-gallen", name: "Orthopädie St. Gallen", w: 432, h: 182 },
+  { mh: 30, file: "gelenkzentrum-winterthur", name: "Gelenkzentrum Winterthur", w: 480, h: 115 },
+];
 
 export default function Home() {
   return (
@@ -63,6 +73,30 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 1c. Logotipi referenci odmah ispod heroja (16.11.2026., po uzoru na cool-down.ch).
+          Reference proizvođača smijemo koristiti (potvrđeno 14.11.2026.); logotipi su sa cool-down.ch. */}
+      <section className="logos" aria-labelledby="logos-naslov">
+        <div className="wrap">
+          <h2 className="logos__title" id="logos-naslov">
+            Prema proizvođaču, Cool Down koriste
+          </h2>
+          <ul className="logos__list">
+            {LOGOS.map((l) => (
+              <li key={l.file}>
+                <Image
+                  src={`/img/logos/${l.file}.png`}
+                  alt={l.name}
+                  width={l.w}
+                  height={l.h}
+                  sizes="160px"
+                  style={{ ["--mh" as string]: `${l.mh}px` }}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -122,31 +156,6 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* 3. Prednosti */}
-      <section className="sect sect--benefits" aria-labelledby="prednosti">
-        <div className="wrap">
-          <SectHead
-            id="prednosti"
-            title="Zašto ne led"
-            lead="Led hladi prejako i prekratko. Cool Down hladi umjereno, ali dugo, i to je cijela razlika."
-          />
-          <Benefits />
-        </div>
-      </section>
-
-      {/* 4. Usporedba */}
-      <section className="sect sect--frost sect--compare" aria-labelledby="usporedba">
-        <div className="wrap">
-          <div className="compare-head">
-            <h2 className="h2" id="usporedba">
-              Cool Down ili led
-            </h2>
-            <p className="lead">Proizvođač uspoređuje Cool Down s ledom i gel oblogama. Ovo su razlike.</p>
-          </div>
-          <Comparison />
-        </div>
-      </section>
-
       {/* 5. Kako se koristi */}
       <section className="sect sect--steps" aria-labelledby="koraci">
         <div className="wrap">
@@ -193,16 +202,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 1a. Led naspram Cool Down */}
+      {/* 3. Zašto ne led: grafikon i prednosti u jednoj sekciji (16.11.2026.). Ranije su to bile
+          tri sekcije s istom porukom (prednosti, tabela i grafikon). Tabela je ostala na /kako-djeluje. */}
       <section className="curve-sect" aria-labelledby="krivulja-naslov">
         <div className="wrap">
           <div className="curve-sect__head">
             <h2 className="curve-sect__title" id="krivulja-naslov">
-              Led naspram Cool Down
+              Zašto ne led
             </h2>
-            <p className="curve-sect__lead">Kako se temperatura obloge mijenja tijekom tri sata.</p>
+            <p className="curve-sect__lead">
+              Led hladi prejako i prekratko. Cool Down hladi umjereno, ali dugo, i to je cijela razlika.
+            </p>
           </div>
           <TempCurve />
+          <div className="curve-sect__benefits">
+            <Benefits />
+          </div>
+          <p className="mt-m">
+            <Link href="/kako-djeluje" className="textlink">
+              Usporedba s ledom i studija
+            </Link>
+          </p>
         </div>
       </section>
 

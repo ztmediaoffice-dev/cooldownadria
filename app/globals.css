@@ -2780,19 +2780,326 @@ fieldset.field {
 }
 
 /* ---------- /kako-djeluje: posebnosti stranice ---------- */
-/* Grafikon odmah ispod heroja: gornja margina grafikona (namijenjena razmaku
-   ispod naslova) se ne zbraja s donjim paddingom heroja. */
-.page-kako-djeluje .page-hero + .sect .curve {
-  margin-top: 0;
+/* Redizajn 16.11.2026. */
+.kd-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(32px, 4vw, 64px);
+  align-items: center;
 }
-/* Studija: čitljivija napomena (kontrast --steel 7,47:1) i lista iste širine kao u Principu. */
-.page-kako-djeluje #studija .note {
+.kd-hero__img {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--frost);
+}
+.kd-hero__img img {
+  object-fit: cover;
+}
+.kd-head {
+  max-width: 40rem;
+  margin-bottom: clamp(28px, 3vw, 40px);
+}
+.kd-head .lead {
+  margin-top: 10px;
+  font-size: var(--t-m);
+}
+.kd-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+}
+.kd-fact {
+  background: #fff;
+  border-top: 3px solid var(--ice);
+  border-radius: 4px;
+  padding: 24px 24px 28px;
+}
+.kd-fact dt {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 6px;
+}
+.kd-fact__value {
+  font-size: clamp(2rem, 1.4rem + 2vw, 3rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+.kd-fact__label {
+  font-size: var(--t-s);
+  font-weight: 600;
+  color: var(--steel);
+}
+.kd-fact dd {
+  margin-top: 14px;
+  color: var(--steel);
+  line-height: 1.55;
+}
+.kd-study {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 2px solid var(--ink);
+  list-style: none;
+  padding: 0;
+}
+.kd-study__item {
+  padding: 24px 28px 28px 0;
+}
+.kd-study__item + .kd-study__item {
+  padding-left: 28px;
+  border-left: 1px solid var(--rule);
+}
+.kd-study__day {
+  font-size: var(--t-s);
+  font-weight: 600;
+  color: var(--steel);
+}
+.kd-study__day span {
+  display: block;
+  font-size: clamp(2.5rem, 1.6rem + 2.6vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 4px 0 2px;
+}
+.kd-study__text {
+  margin-top: 12px;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.kd-study__more {
+  margin-top: 8px;
+  max-width: 40rem;
+}
+.kd-study__source {
+  margin-top: 24px;
+  max-width: 40em;
   font-size: var(--t-s);
   color: var(--steel);
 }
-.page-kako-djeluje #studija .prose {
-  max-width: none;
+.kd-study__source p + p {
+  margin-top: 8px;
 }
-.page-kako-djeluje #studija .prose > p {
-  max-width: 40em;
+@media (max-width: 900px) {
+  .kd-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .kd-facts,
+  .kd-study {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .kd-study__item,
+  .kd-study__item + .kd-study__item {
+    padding: 18px 0;
+    border-left: 0;
+  }
+  .kd-study__item + .kd-study__item {
+    border-top: 1px solid var(--rule);
+  }
+}
+
+/* ---------- Dizajnerski krug 16.11.2026. ---------- */
+
+/* Hero na računaru: redovi po sadržaju (ranije 1fr 1fr), pa ispod dugmadi nema praznog prostora. */
+@media (min-width: 901px) {
+  .hero__grid {
+    grid-template-rows: auto auto;
+  }
+}
+
+/* Zašto ne led: prednosti ispod grafikona (spojene sekcije). */
+.curve-sect__benefits {
+  margin-top: clamp(40px, 5vw, 64px);
+}
+
+/* Izbor seta na mobitelu: slika lijevo, naziv desno, pa je kartica oko 40 % niža. */
+@media (max-width: 600px) {
+  .product--chooser .product__head {
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+    align-items: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  .product--chooser .product__head .product__img {
+    aspect-ratio: 1;
+    border-bottom: 0;
+    border-right: 1px solid var(--rule);
+  }
+  .product--chooser .product__img img {
+    padding: 8%;
+  }
+  .product__head-text,
+  .product--chooser.product--feature .product__head-text {
+    padding: 0 16px;
+  }
+  .product--chooser .product__name {
+    font-size: 1.25rem;
+  }
+  .product--chooser .product__body {
+    padding: 16px 18px 20px;
+  }
+  .product--chooser.product--feature .product__body {
+    padding: 15px 17px 19px;
+  }
+  .product--chooser:not(.product--feature) .product__rec {
+    display: none;
+  }
+  .product--chooser .product__list {
+    margin: 14px 0 18px;
+  }
+}
+
+/* /za-partnere, redizajn 16.11.2026. (koristi i .kd-hero, .kd-head s /kako-djeluje) */
+.kd-hero__img--product {
+  background: #fff;
+  border: 1px solid var(--rule);
+}
+.kd-hero__img--product img {
+  object-fit: contain;
+  padding: 6%;
+}
+.zp-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  list-style: none;
+  padding: 0;
+}
+.zp-card {
+  background: var(--frost);
+  border-top: 3px solid var(--ice);
+  border-radius: 4px;
+  padding: 22px 22px 26px;
+}
+.zp-card--white {
+  background: #fff;
+}
+.zp-card h3,
+.zp-card dt {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.zp-card p,
+.zp-card dd {
+  margin-top: 10px;
+  color: var(--steel);
+  line-height: 1.55;
+}
+.zp-num {
+  font-size: clamp(2rem, 1.4rem + 1.6vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ice);
+  margin-bottom: 14px;
+}
+@media (max-width: 1100px) {
+  .zp-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .zp-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Traka s logotipima referenci ispod heroja (16.11.2026.) */
+.logos {
+  padding-bottom: clamp(40px, 5vw, 72px);
+}
+.logos__title {
+  font-size: var(--t-s);
+  font-weight: 600;
+  color: var(--steel);
+  margin-bottom: 20px;
+}
+.logos__list {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 24px clamp(20px, 3vw, 44px);
+  align-items: center;
+  list-style: none;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--rule);
+}
+.logos__list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+}
+.logos__list img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  /* optička visina po logotipu (--mh), da teški i tanki znakovi djeluju jednako */
+  max-height: var(--mh, 44px);
+  filter: grayscale(1);
+  opacity: 0.72;
+}
+@media (max-width: 900px) {
+  .logos__list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .logos__list li {
+    height: 44px;
+  }
+  .logos__list img {
+    max-height: calc(var(--mh, 44px) * 0.78);
+  }
+}
+.hero:has(+ .logos) {
+  padding-bottom: clamp(32px, 4vw, 56px);
+}
+
+/* Šest prednosti s ikonama na stranicama proizvoda (16.11.2026.) */
+.sect--adv {
+  border-top: 1px solid var(--rule);
+}
+.sect--adv .h2 {
+  margin-bottom: clamp(28px, 3vw, 40px);
+}
+.adv {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 28px clamp(20px, 2.5vw, 36px);
+  list-style: none;
+  padding: 0;
+}
+.adv__icon {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: var(--ice);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.adv__title {
+  margin-top: 14px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.adv__text {
+  margin-top: 6px;
+  font-size: var(--t-s);
+  line-height: 1.5;
+  color: var(--steel);
+}
+@media (max-width: 600px) {
+  .adv {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 16px;
+  }
 }

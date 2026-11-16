@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Closing, Crumbs, ProductCard, Safety, Steps, orderCta } from "@/components/Sections";
 import { PRODUCTS } from "@/lib/content";
+import { Advantages } from "@/components/Advantages";
 import { SITE } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -95,6 +96,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="sect sect--adv" aria-labelledby="prednosti">
+        <div className="wrap">
+          <h2 className="h2" id="prednosti">
+            Prednosti prema proizvođaču
+          </h2>
+          <Advantages p={p} />
         </div>
       </section>
 

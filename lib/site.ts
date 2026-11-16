@@ -1,5 +1,5 @@
 // Osnovni podaci o stranici.
-// E-mail i pravni podaci su potvrđeni (14.11.2026.). Telefon i WhatsApp još nisu dostavljeni.
+// E-mail i pravni podaci su potvrđeni (14.11.2026.). Telefon je dostavljen 15.11.2026. (isti kao na Google profilu); WhatsApp nije potvrđen.
 // Dok je `phone` prazan, gumbi za poziv i WhatsApp se ne prikazuju.
 
 type Site = {
@@ -17,7 +17,7 @@ export const SITE: Site = {
   name: "Cooldown Adria",
   url: "https://cooldownadria.com",
   email: "info@cooldownadria.com", // potvrđeno 14.11.2026.
-  phone: "", // npr. "+385 91 000 0000"
+  phone: "+385 91 217 4000", // 15.11.2026., isti broj kao na Google Business Profilu
   whatsapp: "", // samo brojke, npr. "385910000000"
   delivery: "Dostava u Hrvatskoj",
   // Pravni podaci tvrtke (dostavio Milan, 14.11.2026.).

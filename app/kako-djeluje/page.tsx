@@ -3,7 +3,7 @@ import { pageUrls } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { TempCurve } from "@/components/TempCurve";
-import { Benefits, Closing, Comparison, PageHero, SectHead } from "@/components/Sections";
+import { Closing, Comparison, Crumbs } from "@/components/Sections";
 
 export const metadata: Metadata = {
   // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
@@ -13,71 +13,92 @@ export const metadata: Metadata = {
   ...pageUrls("/kako-djeluje"),
 };
 
+// Redizajn 16.11.2026.: hero s fotografijom, tri ključna podatka umjesto liste od šest redova,
+// grafikon, usporedba s ledom i studija kao vremenska linija. Tekstovi i tvrdnje su isti kao prije.
+// Lista „Četiri razloga” je uklonjena s ove stranice (ponavljala je tabelu i studiju); ostaje na početnoj.
+const FACTS = [
+  { value: "7 do 10 °C", label: "Na kojoj temperaturi", text: "Ne ide u minus, pa ne stvara ozebline." },
+  {
+    value: "2 sata i duže",
+    label: "Koliko dugo",
+    text: "Zavoj hladi dok se ne osuši, a hlađenje se može ponavljati koliko treba.",
+  },
+  { value: "oko 40", label: "Primjena iz jedne boce", text: "Boca ICE FLUID-a od 250 ml dovoljna je za oko 40 primjena." },
+];
+
+const STUDY = [
+  { day: "30", text: "Mišićni presjek se nije značajno smanjio." },
+  { day: "60", text: "Mišićni presjek je porastao." },
+  { day: "90", text: "Mišićni presjek je statistički značajno porastao." },
+];
+
 export default function Page() {
   return (
-    // .page-calm: mirniji tretman usklađen s početnom; .page-kako-djeluje: posebnosti ove stranice.
     <div className="page-calm page-kako-djeluje">
-      <PageHero
-        crumbs={[{ label: "Kako djeluje" }]}
-        title="Hladi dugo, a ne prejako."
-        lead="Pamučni zavoj natopljen ICE FLUID-om je hladni oblog koji hladi isparavanjem. Temperatura ostaje na 7 do 10 °C dok se zavoj ne osuši, pa se može nositi 2 sata i duže."
-      >
-        <div className="actions">
-          <Link href="/narudzba" className="btn">
-            Naručite svoj set
-          </Link>
-          <Link href="/upute" className="btn btn--ghost">
-            Upute za primjenu
-          </Link>
-        </div>
-      </PageHero>
-
-      <section className="sect sect--tight-top" aria-label="Krivulja temperature">
+      <section className="page-hero kd-hero">
         <div className="wrap">
-          <TempCurve />
+          <Crumbs items={[{ label: "Kako djeluje" }]} />
+          <div className="kd-hero__grid">
+            <div>
+              <h1 className="page-title">Hladi dugo, a ne prejako.</h1>
+              <p className="lead">
+                Pamučni zavoj natopljen ICE FLUID-om je hladni oblog koji hladi isparavanjem. Temperatura ostaje na 7
+                do 10 °C dok se zavoj ne osuši, pa se može nositi 2 sata i duže.
+              </p>
+              <div className="actions">
+                <Link href="/narudzba" className="btn">
+                  Naručite svoj set
+                </Link>
+                <Link href="/upute" className="btn btn--ghost">
+                  Upute za primjenu
+                </Link>
+              </div>
+            </div>
+            <div className="kd-hero__img">
+              <Image
+                src="/img/foto/priprema.jpg"
+                alt="Pamučni zavoj se vadi iz posude s ICE FLUID-om, pored boce Cool Down"
+                fill
+                priority
+                sizes="(max-width: 900px) 100vw, 45vw"
+                style={{ objectPosition: "60% 40%" }}
+              />
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="sect sect--frost" aria-labelledby="princip">
-        <div className="wrap split">
-          <div>
+        <div className="wrap">
+          <div className="kd-head">
             <h2 className="h2" id="princip">
               Kako hladi bez leda
             </h2>
+            <p className="lead">Prirodno, isparavanjem i aktivacijom receptora za hladnoću.</p>
           </div>
-          <dl className="factlist">
-            <div>
-              <dt>Kako hladi</dt>
-              <dd>Prirodno, isparavanjem i aktivacijom receptora za hladnoću.</dd>
-            </div>
-            <div>
-              <dt>Na kojoj temperaturi</dt>
-              <dd>Hladi na 7 do 10 °C. Ne ide u minus, pa ne stvara ozebline.</dd>
-            </div>
-            <div>
-              <dt>Koliko dugo</dt>
-              <dd>2 sata i duže. Zavoj hladi dok se ne osuši, a hlađenje se može ponavljati koliko treba.</dd>
-            </div>
-            <div>
-              <dt>Priprema</dt>
-              <dd>Spreman odmah. ICE FLUID se čuva na sobnoj temperaturi, bez hladnjaka i zamrzivača.</dd>
-            </div>
-            <div>
-              <dt>Kretanje</dt>
-              <dd>Fiksirni zavoj drži oblog na mjestu i ne ograničava pokrete.</dd>
-            </div>
-            <div>
-              <dt>Višekratno</dt>
-              <dd>Boca ICE FLUID-a od 250 ml dovoljna je za oko 40 primjena.</dd>
-            </div>
+          <dl className="kd-facts">
+            {FACTS.map((f) => (
+              <div className="kd-fact" key={f.label}>
+                <dt>
+                  <span className="kd-fact__value">{f.value}</span>
+                  <span className="kd-fact__label">{f.label}</span>
+                </dt>
+                <dd>{f.text}</dd>
+              </div>
+            ))}
           </dl>
         </div>
       </section>
 
-      <section className="sect sect--benefits" aria-labelledby="prednosti">
+      <section className="curve-sect" aria-labelledby="krivulja-naslov">
         <div className="wrap">
-          <SectHead id="prednosti" title="Četiri razloga za hlađenje bez leda" />
-          <Benefits />
+          <div className="curve-sect__head">
+            <h2 className="curve-sect__title" id="krivulja-naslov">
+              Led naspram Cool Down
+            </h2>
+            <p className="curve-sect__lead">Kako se temperatura obloge mijenja tijekom tri sata.</p>
+          </div>
+          <TempCurve />
         </div>
       </section>
 
@@ -92,37 +113,34 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="sect" aria-labelledby="studija" id="studija">
-        <div className="wrap split">
-          <div>
-            <h2 className="h2">Studija proizvođača</h2>
-            <p className="note mt-s">
-              Podaci su prema proizvođaču Cool Down AG. Detalje studije proizvođač daje na upit.
-            </p>
-          </div>
-          <div className="prose">
-            <p>
+      <section className="sect" aria-labelledby="studija-naslov" id="studija">
+        <div className="wrap">
+          <div className="kd-head">
+            <h2 className="h2" id="studija-naslov">
+              Studija proizvođača
+            </h2>
+            <p className="lead">
               Studija je usporedila Cool Down s hladnim paketom s ledom i s grupom bez hlađenja, kod pacijenata nakon
               operacije prednjeg križnog ligamenta.
             </p>
-            <dl className="factlist">
-              <div>
-                <dt className="num">Nakon 30 dana</dt>
-                <dd>Mišićni presjek se nije značajno smanjio.</dd>
-              </div>
-              <div>
-                <dt className="num">Nakon 60 dana</dt>
-                <dd>Mišićni presjek je porastao.</dd>
-              </div>
-              <div>
-                <dt className="num">Nakon 90 dana</dt>
-                <dd>Mišićni presjek je statistički značajno porastao.</dd>
-              </div>
-              <div>
-                <dt>Lijekovi protiv bolova</dt>
-                <dd>Potrošnja je bila manja.</dd>
-              </div>
-            </dl>
+          </div>
+          <ol className="kd-study">
+            {STUDY.map((s) => (
+              <li className="kd-study__item" key={s.day}>
+                <p className="kd-study__day">
+                  Nakon <span>{s.day}</span> dana
+                </p>
+                <p className="kd-study__text">{s.text}</p>
+              </li>
+            ))}
+          </ol>
+          <dl className="factlist kd-study__more">
+            <div>
+              <dt>Lijekovi protiv bolova</dt>
+              <dd>Potrošnja je bila manja.</dd>
+            </div>
+          </dl>
+          <div className="kd-study__source">
             <p>
               Izvor:{" "}
               <a
@@ -135,6 +153,7 @@ export default function Page() {
               </a>
               . Randomizirana studija na 36 pacijenata, 12 u svakoj grupi.
             </p>
+            <p>Podaci su prema proizvođaču Cool Down AG. Detalje studije proizvođač daje na upit.</p>
             <p>
               Fizioterapeuti i liječnici mogu detalje studije{" "}
               <Link href="/zahtjev?vrsta=demonstracija" className="textlink">
@@ -143,18 +162,6 @@ export default function Page() {
               .
             </p>
           </div>
-        </div>
-      </section>
-
-      <section aria-label="Priprema zavoja">
-        <div className="banner-img">
-          <Image
-            src="/img/foto/priprema.jpg"
-            alt="Pamučni zavoj se vadi iz posude s ICE FLUID-om, pored boce Cool Down"
-            fill
-            sizes="100vw"
-            style={{ objectPosition: "50% 45%" }}
-          />
         </div>
       </section>
 

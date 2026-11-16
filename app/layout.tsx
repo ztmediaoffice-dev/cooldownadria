@@ -39,6 +39,7 @@ const orgJsonLd = {
   url: SITE.url,
   logo: `${SITE.url}/logo.svg`,
   email: SITE.email,
+  ...(SITE.phone ? { telephone: SITE.phone } : {}),
   description: "Generalni distributer Cool Down AG za Hrvatsku i Sloveniju.",
   areaServed: ["HR", "SI"],
 };
