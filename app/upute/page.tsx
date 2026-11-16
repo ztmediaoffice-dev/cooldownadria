@@ -50,7 +50,7 @@ export default function Page() {
             </div>
             <div>
               <dt>Trajanje</dt>
-              <dd>Optimalno 2 sata. Zavoj hladi 2 do 3 sata, dok se ne osuši.</dd>
+              <dd>Hladni oblog se drži optimalno 2 sata. Zavoj hladi 2 do 3 sata, dok se ne osuši.</dd>
             </div>
             <div>
               <dt>Ponavljanje</dt>

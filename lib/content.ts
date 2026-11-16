@@ -113,7 +113,7 @@ export const APPLICATIONS: Application[] = [
     imageAlt: "Osoba s ortozom na koljenu hoda uz hodalicu.",
     position: "62% 60%",
     body: [
-      "Proizvođač navodi primjenu u ortopediji odmah nakon operacije i tijekom rehabilitacije. Nakon operacije hladi se 2 do 3 puta dnevno.",
+      "Proizvođač navodi primjenu u ortopediji odmah nakon operacije i tijekom rehabilitacije. Studija proizvođača rađena je nakon operacije koljena (prednji križni ligament). Nakon operacije hladi se 2 do 3 puta dnevno.",
       "Pacijent sam stavlja i skida zavoj. Zavoj ostaje na mjestu i ne ograničava pokrete, pa se hlađenje uklapa u svakodnevicu.",
       "Svježe rane se prije primjene prekriju folijom. Na otvorenu ranu Cool Down se ne stavlja.",
     ],
@@ -121,25 +121,25 @@ export const APPLICATIONS: Application[] = [
     seoTitle: "Hladni oblog nakon operacije, bez leda",
     seoDescription:
       "Hladni oblog koji pacijent nakon operacije nosi kod kuće, bez leda iz zamrzivača i bez ozeblina. Hladi na 7 do 10 °C. Nakon operacije hladi se 2 do 3 puta dnevno.",
-    bodyTitle: "Hlađenje kod kuće nakon operacije",
+    bodyTitle: "Hlađenje nakon operacije, kod kuće",
   },
   {
     slug: "nakon-ozljeda",
     title: "Nakon ozljeda",
-    lead: "Uganuće gležnja, nagnječenje, istegnuće ili tupa ozljeda: hladni oblog je spreman odmah, na terenu ili kod kuće.",
+    lead: "Uganuće gležnja ili zgloba, nagnječenje, istegnuće ili tupa ozljeda: hladni oblog je spreman odmah, na terenu ili kod kuće.",
     image: "/img/foto/nakon-ozljede.jpg",
     imageAlt: "Sportaš sjedi na atletskoj stazi, a druga osoba mu pridržava koljeno.",
     position: "30% 50%",
     body: [
       "Indikacije prema proizvođaču su uganuća, nagnječenja, tupe ozljede i istegnuća udova.",
-      "ICE FLUID ne treba hladnjak ni zamrzivač. Pomiješa se s vodom, natopi zavoj i omota. FIX AID je već natopljen.",
+      "ICE FLUID ne treba hladnjak ni zamrzivač, pa je hladni oblog pri ruci i kad nakon udarca ili uganuća nastane oteklina. Pomiješa se s vodom, natopi zavoj i omota. FIX AID je već natopljen.",
       "Zavoj hladi na 7 do 10 °C i ne ide u minus, pa ne stvara ozebline kao led.",
     ],
     recommended: "first-aid-set",
     seoTitle: "Hladni oblog za uganuće gležnja i ozljede",
     seoDescription:
       "Uganuće gležnja, nagnječenje, istegnuće ili tupa ozljeda: Cool Down hladni oblog je spreman odmah, bez zamrzivača. Hladi na 7 do 10 °C i ne stvara ozebline.",
-    bodyTitle: "Hladni oblog za uganuće i udarac",
+    bodyTitle: "Hladni oblozi za uganuće zgloba i udarac",
   },
   {
     slug: "nakon-fizickog-napora",
@@ -279,7 +279,7 @@ export const FAQ = [
   },
   {
     id: "trajanje",
-    q: "Koliko dugo se nosi hladni oblog?",
+    q: "Koliko dugo se drže hladni oblozi?",
     a: "2 sata i duže. Zavoj hladi dok se ne osuši. Hlađenje se može ponavljati koliko treba, a nakon operacije 2 do 3 puta dnevno.",
   },
   {

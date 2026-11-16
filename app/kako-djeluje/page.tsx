@@ -106,8 +106,14 @@ export default function Page() {
         <div className="wrap">
           <div className="compare-head">
             <h2 className="h2" id="usporedba">
-              Hladni oblog ili led
+              Led na oteklinu ili hladni oblog
             </h2>
+            {/* SEO 16.11.2026.: led na oteklinu, led na koljeno, led na ozljedu, ledeni oblog.
+                Iste tvrdnje kao u tabeli i u pitanju „Je li ovo isto kao led?”. */}
+            <p className="lead mt-s">
+              Led na koljeno, na ozljedu ili na oteklinu hladi naglo i pada prema 0&nbsp;°C, pa se ledeni oblog mora
+              skidati. Cool Down hladi na 7 do 10&nbsp;°C i nosi se 2 sata i duže.
+            </p>
           </div>
           <Comparison />
         </div>

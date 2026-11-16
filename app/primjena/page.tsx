@@ -27,7 +27,7 @@ export default function Page() {
             <span className="title-part">Nakon fizičkog napora</span>
           </>
         }
-        lead="Indikacije prema proizvođaču su uganuća, nagnječenja, tupe ozljede i istegnuća udova. Za liječnike i fizioterapeute još i ortopedija nakon operacije, rehabilitacija, regeneracija mišića te bol kod reume i artritisa."
+        lead="Hladni oblozi Cool Down koriste se u tri situacije. Indikacije prema proizvođaču su uganuća, nagnječenja, tupe ozljede i istegnuća udova. Za liječnike i fizioterapeute još i ortopedija nakon operacije, rehabilitacija, regeneracija mišića te bol kod reume i artritisa."
       />
       <section className="sect sect--tight-top sect--uses">
         <div className="wrap">

@@ -22,7 +22,7 @@ import { pageUrls } from "@/lib/seo";
 export const metadata: Metadata = {
   title: { absolute: "Cool Down hladni oblozi: hlađenje bez leda | Cooldown Adria" },
   description:
-    "Cool Down je hladni oblog bez leda i zamrzivača: pamučni zavoj s ICE FLUID-om hladi na 7 do 10 °C i nosi se 2 sata i duže. Nakon operacije, ozljede ili napora.",
+    "Cool Down hladni oblozi za koljeno, gležanj i rame, bez leda i zamrzivača. Pamučni zavoj s ICE FLUID-om hladi na 7 do 10 °C i nosi se 2 sata i duže.",
   ...pageUrls("/"),
 };
 
@@ -119,7 +119,7 @@ export default function Home() {
             <h2 className="h2" id="film-naslov">
               Pogledajte kako djeluje
             </h2>
-            <p className="film__lead">Od boce do omotanog koljena u šest koraka. Uključite zvuk.</p>
+            <p className="film__lead">Hladni oblog za koljeno, od boce do omotanog zavoja u šest koraka. Uključite zvuk.</p>
           </div>
           <FilmVideo />
           <p className="film__meta">Video upute · 41 s</p>
@@ -162,7 +162,7 @@ export default function Home() {
           <SectHead
             id="koraci"
             title="Kako se stavlja: šest koraka"
-            lead="ICE FLUID se miješa s vodom. Pamučni zavoj se natopi i omota, a preko njega ide fiksirni zavoj."
+            lead="ICE FLUID se miješa s vodom. Pamučni zavoj za hlađenje se natopi i omota, a preko njega ide fiksirni zavoj."
           />
           <StepPlayer />
           <div className="actions mt-m">
@@ -177,7 +177,7 @@ export default function Home() {
       <section className="sect sect--tight-top sect--uses" aria-labelledby="primjena">
         <div className="wrap">
           <h2 className="sr-only" id="primjena">
-            Hladni oblozi nakon operacije, ozljeda i napora
+            Hladni oblozi za koljeno, gležanj i rame nakon operacije, ozljeda i napora
           </h2>
           <div className="uses">
             {APPLICATIONS.map((a) => (
