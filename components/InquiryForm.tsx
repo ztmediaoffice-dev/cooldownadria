@@ -2,9 +2,18 @@
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useRef, useState, type FormEvent, type ReactNode } from "react";
-import { ORDER_OPTIONS, PARTS_OPTION } from "@/lib/content";
-import { REQUEST_TYPES, needsQty, validateInquiry, type ErrorKey, type Errors, type Mode } from "@/lib/inquiry";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import {
+  REQUEST_TYPES,
+  validateInquiry,
+  validateLines,
+  type ErrorKey,
+  type Errors,
+  type Mode,
+  type RowError,
+} from "@/lib/inquiry";
+import { OrderItems, newRow, type Row } from "@/components/OrderItems";
+import { orderStore } from "@/lib/order-store";
 
 const ORG_TYPES = [
   "Fizioterapija ili ordinacija",
@@ -16,26 +25,17 @@ const ORG_TYPES = [
   "Drugo",
 ];
 
-// Polje u obrascu na koje ide fokus za pojedinu grešku.
-const FIELD_OF: Record<ErrorKey, string> = {
-  product: "product",
-  qty: "qty",
-  type: "type",
-  org: "org",
-  name: "name",
-  contact: "email",
-  email: "email",
-  message: "message",
-  consent: "consent",
-};
-
 export function InquiryForm({
   mode,
-  defaultProduct,
+  defaultItems,
+  partsFirst,
   defaultType,
 }: {
   mode: Mode;
-  defaultProduct?: string;
+  /** Narudžba: id proizvoda za prvi red (iz ?proizvod=). */
+  defaultItems?: string[];
+  /** Narudžba: izbornik se otvara na grupi pojedinačnih dijelova. */
+  partsFirst?: boolean;
   defaultType?: string;
 }) {
   const router = useRouter();
@@ -43,11 +43,30 @@ export function InquiryForm({
   const [errors, setErrors] = useState<Errors>({});
   // Programska zaštita od ponovnog slanja (klik, Enter, submit), neovisno o stanju dugmeta.
   const sendingRef = useRef(false);
-  // Odabrani proizvod u narudžbi. Bez poznatog parametra izbor je prazan.
-  // Kod upita za dijelove nema količine, a napomena služi za popis dijelova.
-  const [product, setProduct] = useState(defaultProduct ?? "");
-  const parts = mode === "narudzba" && product === PARTS_OPTION;
-  const showQty = mode === "narudzba" && needsQty(product);
+  // Narudžba s više stavki (17.11.2026.). Bez poznatog parametra prvi red je prazan.
+  const [rows, setRowsState] = useState<Row[]>(() =>
+    defaultItems?.length ? defaultItems.map((id) => newRow(id)) : [newRow()],
+  );
+  const [rowErrors, setRowErrors] = useState<RowError[]>([]);
+  const [advice, setAdvice] = useState(false);
+  // Nakon neuspjele provjere fokus ide na prvo neispravno polje, redom u obrascu.
+  const [focusError, setFocusError] = useState(0);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Greške redova vrijede za red, ne za indeks: kad se popis promijeni, brišu se.
+  function setRows(next: Row[]) {
+    setRowsState(next);
+    setRowErrors([]);
+  }
+
+  useEffect(() => {
+    if (mode === "narudzba") orderStore.set(rows.map(({ id, qty }) => ({ id, qty })));
+  }, [mode, rows]);
+
+  useEffect(() => {
+    if (!focusError) return;
+    formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+  }, [focusError]);
 
   function tracking() {
     const p = new URLSearchParams(window.location.search);
@@ -67,17 +86,21 @@ export function InquiryForm({
     if (sendingRef.current) return;
     const form = ev.currentTarget;
     const fd = new FormData(form);
-    const data = Object.fromEntries(fd.entries());
-    const e = validateInquiry(mode, data);
+    const data: Record<string, unknown> = Object.fromEntries(
+      Array.from(fd.entries()).filter(([k]) => !k.startsWith("qty-")),
+    );
+    if (mode === "narudzba") {
+      data.items = rows.map(({ id, qty }) => ({ id, qty }));
+      if (advice) data.advice = "da";
+      // Prazan jedini red uz savjet ne šaljemo kao stavku.
+      if (advice && rows.length === 1 && !rows[0].id) data.items = [];
+    }
+    const e = validateInquiry(mode, { ...data, items: mode === "narudzba" ? rows : undefined });
+    const re = mode === "narudzba" ? validateLines(rows, advice).rows : [];
     setErrors(e);
-    const keys = Object.keys(e) as ErrorKey[];
-    if (keys.length) {
-      // Fokus na prvo neispravno polje po stvarnom redoslijedu u obrascu.
-      const names = new Set(keys.map((k) => FIELD_OF[k]));
-      const first = Array.from(form.elements).find(
-        (el): el is HTMLElement => el instanceof HTMLElement && names.has((el as HTMLInputElement).name),
-      );
-      first?.focus();
+    setRowErrors(re);
+    if (Object.keys(e).length) {
+      setFocusError((n) => n + 1);
       return;
     }
     sendingRef.current = true;
@@ -116,7 +139,7 @@ export function InquiryForm({
   const sending = status === "sending";
 
   return (
-    <form className="form" onSubmit={onSubmit} noValidate aria-busy={sending || undefined}>
+    <form ref={formRef} className="form" onSubmit={onSubmit} noValidate aria-busy={sending || undefined}>
       {mode === "zahtjev" && (
         <fieldset className="field">
           <legend>Što trebate?</legend>
@@ -138,42 +161,21 @@ export function InquiryForm({
       )}
 
       {mode === "narudzba" && (
-        <div className="form__row">
-          <div className="field">
-            <label htmlFor="product">Proizvod {req}</label>
-            <select
-              id="product"
-              name="product"
-              required
-              value={product}
-              onChange={(e) => setProduct(e.target.value)}
-              {...inv(["product"])}
-            >
-              <option value="">Odaberite proizvod</option>
-              {ORDER_OPTIONS.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </select>
-            {err("product")}
-          </div>
-          {showQty ? (
-            <div className="field">
-              <label htmlFor="qty">Količina {req}</label>
-              <input
-                id="qty"
-                name="qty"
-                type="number"
-                min={1}
-                step={1}
-                required
-                defaultValue={1}
-                inputMode="numeric"
-                {...inv(["qty"])}
-              />
-              {err("qty")}
-            </div>
-          ) : null}
-        </div>
+        <fieldset className="field">
+          <legend>Proizvodi {req}</legend>
+          <OrderItems rows={rows} setRows={setRows} errors={rowErrors} preferGroup={partsFirst ? "dio" : undefined} />
+          <label className="consent orderlist__advice">
+            <input
+              type="checkbox"
+              checked={advice}
+              onChange={(ev) => {
+                setAdvice(ev.target.checked);
+                setRowErrors([]);
+              }}
+            />
+            <span>Ne znam što trebam, savjetujte me.</span>
+          </label>
+        </fieldset>
       )}
 
       {mode === "zahtjev" && (
@@ -241,7 +243,7 @@ export function InquiryForm({
 
       <div className="field">
         <label htmlFor="message">
-          {mode === "kontakt" ? "Poruka" : parts ? "Koji dijelovi i koliko" : "Napomena"}{" "}
+          {mode === "kontakt" ? "Poruka" : "Napomena"}{" "}
           {mode === "kontakt" ? req : <span className="opt">(neobavezno)</span>}
         </label>
         <textarea
@@ -249,9 +251,7 @@ export function InquiryForm({
           name="message"
           required={mode === "kontakt" || undefined}
           placeholder={
-            parts
-              ? "Na primjer: 2 × ICE FLUID 250 ml, 4 pamučna zavoja 10 × 200 cm."
-              : mode === "narudzba"
+            mode === "narudzba"
                 ? "Na primjer: za što vam treba, adresa za dostavu ili pitanje."
                 : mode === "zahtjev"
                   ? "Na primjer: broj pacijenata ili sportaša, termin koji vam odgovara."

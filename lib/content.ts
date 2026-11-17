@@ -77,17 +77,101 @@ export const SINGLE_ITEMS = [
   "Posuda 400 ml",
 ];
 
-// Upit za pojedinačne dijelove: kategorija bez odabira seta, a dijelovi se navode u napomeni.
+// Link „Upit za pojedinačne dijelove” (/narudzba?proizvod=…): isti obrazac, prazan prvi red,
+// a izbornik se otvara na grupi dijelova.
 export const PARTS_OPTION = "Pojedinačni dijelovi";
 
-export const ORDER_OPTIONS = [
-  "PROFESSIONAL SET",
-  "FIRST AID SET",
-  "FIX AID",
-  PARTS_OPTION,
-  ...SINGLE_ITEMS,
-  "Nisam siguran, trebam savjet",
+// Katalog za narudžbu s više stavki (17.11.2026.). Nazivi su isti kao u PRODUCTS i SINGLE_ITEMS,
+// da stari linkovi /narudzba?proizvod=<naziv> i dalje rade. Opisi su samo podaci koji su već na webu.
+// Slike su fotografije proizvođača sa cool-down.ch (dozvola 14.11.2026.), ujednačene na 480 × 480.
+export type CatalogItem = {
+  id: string;
+  name: string;
+  group: "set" | "dio";
+  image: string;
+  desc: string;
+};
+
+export const CATALOG_GROUPS = [
+  { id: "set", label: "Setovi" },
+  { id: "dio", label: "Pojedinačni dijelovi" },
+] as const;
+
+export const CATALOG: CatalogItem[] = [
+  {
+    id: "professional-set",
+    name: "PROFESSIONAL SET",
+    group: "set",
+    image: "/img/katalog/professional-set-k1.jpg",
+    desc: "ICE FLUID 250 ml, 2 pamučna zavoja, fiksirni zavoj i mješalica. Oko 40 primjena.",
+  },
+  {
+    id: "first-aid-set",
+    name: "FIRST AID SET",
+    group: "set",
+    image: "/img/katalog/first-aid-set-k1.jpg",
+    desc: "ICE FLUID 100 ml, pamučni i fiksirni zavoj te posuda. Oko 15 primjena.",
+  },
+  {
+    id: "fix-aid",
+    name: "FIX AID",
+    group: "set",
+    image: "/img/katalog/fix-aid-k1.jpg",
+    desc: "Gotov natopljeni zavoj 10 cm × 1,5 m, bez miješanja.",
+  },
+  {
+    id: "ice-fluid-100",
+    name: "ICE FLUID 100 ml",
+    group: "dio",
+    image: "/img/katalog/ice-fluid-100-k1.jpg",
+    desc: "Koncentrat za oko 15 primjena.",
+  },
+  {
+    id: "ice-fluid-250",
+    name: "ICE FLUID 250 ml",
+    group: "dio",
+    image: "/img/katalog/ice-fluid-250-k1.jpg",
+    desc: "Koncentrat za oko 40 primjena.",
+  },
+  {
+    id: "pamucni-zavoj-6",
+    name: "Pamučni zavoj 6 × 150 cm",
+    group: "dio",
+    image: "/img/katalog/pamucni-zavoj-6-k1.jpg",
+    desc: "100 % pamuk, bez lateksa.",
+  },
+  {
+    id: "pamucni-zavoj-10",
+    name: "Pamučni zavoj 10 × 200 cm",
+    group: "dio",
+    image: "/img/katalog/pamucni-zavoj-10-k1.jpg",
+    desc: "100 % pamuk, bez lateksa.",
+  },
+  {
+    id: "fiksirni-zavoj",
+    name: "Fiksirni zavoj, oko 6,9 cm × 27 m",
+    group: "dio",
+    image: "/img/katalog/fiksirni-zavoj-k1.jpg",
+    desc: "Ide preko pamučnog zavoja.",
+  },
+  {
+    id: "mjesalica-1800",
+    name: "Mješalica 1800 ml",
+    group: "dio",
+    image: "/img/katalog/mjesalica-1800-k1.jpg",
+    desc: "Za miješanje ICE FLUID-a s vodom, kao u PROFESSIONAL SET-u.",
+  },
+  {
+    id: "posuda-400",
+    name: "Posuda 400 ml",
+    group: "dio",
+    image: "/img/katalog/posuda-400-k1.jpg",
+    desc: "Za miješanje ICE FLUID-a s vodom, kao u FIRST AID SET-u.",
+  },
 ];
+
+export const catalogById = (id: string) => CATALOG.find((c) => c.id === id);
+export const catalogByName = (name: string) => CATALOG.find((c) => c.name === name);
 
 export type Application = {
   slug: string;

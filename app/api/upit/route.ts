@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isMode, needsQty, validateInquiry } from "@/lib/inquiry";
+import { isMode, linesText, toLines, validateInquiry } from "@/lib/inquiry";
 import { allowRequest, clientIp } from "@/lib/rate-limit";
 
 // Prima narudžbe, zahtjeve partnera i poruke.
@@ -9,8 +9,8 @@ import { allowRequest, clientIp } from "@/lib/rate-limit";
 const LABELS: Record<string, string> = {
   mode: "Vrsta obrasca",
   type: "Zahtjev",
-  product: "Proizvod",
-  qty: "Količina",
+  products: "Proizvodi",
+  advice: "Treba savjet",
   org: "Ustanova ili klub",
   orgType: "Vrsta ustanove",
   name: "Ime i prezime",
@@ -60,30 +60,53 @@ export async function POST(req: Request) {
 
   const data: Record<string, string> = {};
   for (const k of Object.keys(LABELS)) {
+    if (k === "products") continue; // gradi se iz popisa stavki
     const v = clean(body[k]);
     if (v) data[k] = v;
   }
+  // Narudžba: popis stavki [{ id, qty }] (17.11.2026.).
+  const lines = mode === "narudzba" ? toLines(body.items) : null;
   // Ista pravila kao u obrascu (lib/inquiry.ts).
-  const errors = validateInquiry(mode, { ...data, consent: clean(body.consent, 10) });
+  const errors = validateInquiry(mode, { ...data, items: lines, consent: clean(body.consent, 10) });
   if (Object.keys(errors).length) {
     return NextResponse.json({ ok: false, errors: Object.keys(errors) }, { status: 422 });
   }
   // Polja koja ne pripadaju ovom načinu se ne prosljeđuju.
-  if (mode !== "narudzba" || !needsQty(data.product ?? "")) delete data.qty;
-  if (mode !== "narudzba") delete data.product;
+  const list = mode === "narudzba" ? linesText(lines ?? [], "\n") : "";
+  if (mode === "narudzba") {
+    if (list) data.products = list;
+    if (data.advice !== "da") delete data.advice;
+  } else delete data.advice;
   if (mode !== "zahtjev") {
     delete data.type;
     delete data.org;
     delete data.orgType;
   }
 
-  const subject = `${SUBJECTS[mode]}${data.type ? `: ${data.type}` : ""}${data.product ? `: ${data.product}` : ""} (${data.name})`;
-  const rows = Object.entries(data)
-    .map(([k, v]) => `<tr><td style="padding:6px 16px 6px 0;color:#46566d">${LABELS[k]}</td><td style="padding:6px 0"><strong>${esc(v)}</strong></td></tr>`)
+  // Naslov narudžbe: prva stavka i broj ostalih, npr. „PROFESSIONAL SET × 2 i još 1 stavka”.
+  let what = "";
+  if (mode === "narudzba") {
+    const items = list.split("\n").filter(Boolean);
+    if (items.length) {
+      const [qty, name] = items[0].split(" × ");
+      const more = items.length - 1;
+      what = `${name} × ${qty}${more ? ` i još ${more} ${more === 1 ? "stavka" : more < 5 ? "stavke" : "stavki"}` : ""}`;
+    } else if (data.advice) what = "treba savjet";
+  }
+  const subject = `${SUBJECTS[mode]}${data.type ? `: ${data.type}` : ""}${what ? `: ${what}` : ""} (${data.name})`;
+  // Redoslijed u e-mailu prati LABELS (proizvodi i savjet odmah nakon vrste obrasca).
+  const ordered = Object.keys(LABELS)
+    .filter((k) => data[k])
+    .map((k) => [k, data[k]] as const);
+  const rows = ordered
+    .map(
+      ([k, v]) =>
+        `<tr><td style="padding:6px 16px 6px 0;color:#46566d;vertical-align:top">${LABELS[k]}</td><td style="padding:6px 0"><strong>${esc(v).replace(/\n/g, "<br>")}</strong></td></tr>`,
+    )
     .join("");
   const html = `<div style="font-family:Arial,sans-serif;color:#052655"><h2 style="margin:0 0 16px">${esc(SUBJECTS[mode])}</h2><table>${rows}</table></div>`;
-  const text = Object.entries(data)
-    .map(([k, v]) => `${LABELS[k]}: ${v}`)
+  const text = ordered
+    .map(([k, v]) => (v.includes("\n") ? `${LABELS[k]}:\n${v}` : `${LABELS[k]}: ${v}`))
     .join("\n");
 
   const key = process.env.RESEND_API_KEY;
