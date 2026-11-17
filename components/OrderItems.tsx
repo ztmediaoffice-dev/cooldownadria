@@ -1,12 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { catalogById } from "@/lib/content";
+import { CATALOG, CATALOG_GROUPS, catalogById } from "@/lib/content";
 import { MAX_QTY, MAX_ROWS, type OrderLine, type RowError } from "@/lib/inquiry";
-import { ProductSelect, type ProductSelectHandle } from "@/components/ProductSelect";
 
-// Popis proizvoda u narudžbi (17.11.2026.): red = izbornik sa slikom, količina (− n +) i ukloni.
-// Isti proizvod ne može biti u dva reda: kad se odabere ponovno, količina se pribraja postojećem redu.
+// Popis proizvoda u narudžbi (17.11.2026.): red = slika odabranog proizvoda, native <select>,
+// količina (− n +) i ukloni. Na telefonu select otvara sistemski izbornik (odluka korisnika:
+// bez vlastitog dropdowna). Isti proizvod ne može biti u dva reda: kad se odabere ponovno,
+// količina se pribraja postojećem redu.
 
 export type Row = OrderLine & { key: number };
 
@@ -17,26 +19,19 @@ type Props = {
   rows: Row[];
   setRows: (rows: Row[]) => void;
   errors: RowError[];
-  preferGroup?: "set" | "dio";
 };
 
-export function OrderItems({ rows, setRows, errors, preferGroup }: Props) {
-  const selects = useRef(new Map<number, ProductSelectHandle | null>());
-  const addRef = useRef<HTMLButtonElement>(null);
+export function OrderItems({ rows, setRows, errors }: Props) {
+  const selects = useRef(new Map<number, HTMLSelectElement | null>());
   const [say, setSay] = useState("");
-  // Nakon promjene popisa fokus ide na zadani element (novi red, prethodni red…), poslije iscrtavanja.
-  const pendingFocus = useRef<{ key: number; open?: boolean } | null>(null);
-  const setFocusTo = (f: { key: number; open?: boolean }) => {
-    pendingFocus.current = f;
-  };
+  // Nakon promjene popisa fokus ide na zadani red, poslije iscrtavanja.
+  const pendingFocus = useRef<number | null>(null);
 
   useEffect(() => {
-    const f = pendingFocus.current;
-    if (!f) return;
+    const key = pendingFocus.current;
+    if (key === null) return;
     pendingFocus.current = null;
-    const s = selects.current.get(f.key);
-    if (f.open) s?.open();
-    else s?.focus();
+    selects.current.get(key)?.focus();
   });
 
   const label = (i: number) => (rows.length > 1 ? `Proizvod ${i + 1}` : "Proizvod");
@@ -47,13 +42,13 @@ export function OrderItems({ rows, setRows, errors, preferGroup }: Props) {
   }
 
   function choose(row: Row, id: string) {
-    const other = rows.find((r) => r.key !== row.key && r.id === id);
+    const other = id ? rows.find((r) => r.key !== row.key && r.id === id) : undefined;
     if (!other) return update(row.key, { id });
     // Spajanje: količina ovog reda se dodaje postojećem, a ovaj red nestaje.
     const sum = Math.min(MAX_QTY, (Number(other.qty) || 1) + (Number(row.qty) || 1));
     setRows(rows.filter((r) => r.key !== row.key).map((r) => (r.key === other.key ? { ...r, qty: String(sum) } : r)));
     setSay(`${nameOf(id)} je već na popisu. Količina je sada ${sum}.`);
-    setFocusTo({ key: other.key });
+    pendingFocus.current = other.key;
   }
 
   function step(row: Row, d: 1 | -1) {
@@ -66,14 +61,14 @@ export function OrderItems({ rows, setRows, errors, preferGroup }: Props) {
     const next = rows.filter((r) => r.key !== row.key);
     setRows(next);
     setSay(`${nameOf(row.id) || "Prazan red"} uklonjen s popisa.`);
-    setFocusTo({ key: next[Math.max(0, i - 1)].key });
+    pendingFocus.current = next[Math.max(0, i - 1)].key;
   }
 
   function add() {
     const r = newRow();
     setRows([...rows, r]);
     setSay("");
-    setFocusTo({ key: r.key, open: true });
+    pendingFocus.current = r.key;
   }
 
   return (
@@ -82,22 +77,38 @@ export function OrderItems({ rows, setRows, errors, preferGroup }: Props) {
         {rows.map((r, i) => {
           const e = errors[i] ?? {};
           const errId = `row-${r.key}-err`;
-          const name = nameOf(r.id);
+          const item = catalogById(r.id);
+          const taken = new Set(rows.filter((x) => x.key !== r.key).map((x) => x.id));
           return (
             <li className="orow" key={r.key}>
+              <span className={`orow__thumb${item ? "" : " orow__thumb--empty"}`} aria-hidden="true">
+                {item ? <Image src={item.image} alt="" width={56} height={56} /> : null}
+              </span>
               <div className="orow__product">
-                <ProductSelect
-                  ref={(h) => {
-                    selects.current.set(r.key, h);
+                <select
+                  ref={(el) => {
+                    selects.current.set(r.key, el);
                   }}
+                  className="orow__select"
+                  name={`product-${r.key}`}
+                  aria-label={label(i)}
                   value={r.id}
-                  onChange={(id) => choose(r, id)}
-                  taken={rows.filter((x) => x.key !== r.key).map((x) => x.id)}
-                  label={label(i)}
-                  invalid={Boolean(e.product)}
-                  describedBy={e.product ? errId : undefined}
-                  preferGroup={preferGroup}
-                />
+                  onChange={(ev) => choose(r, ev.target.value)}
+                  aria-invalid={Boolean(e.product) || undefined}
+                  aria-describedby={e.product ? errId : undefined}
+                >
+                  <option value="">Odaberite proizvod</option>
+                  {CATALOG_GROUPS.map((g) => (
+                    <optgroup key={g.id} label={g.label}>
+                      {CATALOG.filter((c) => c.group === g.id).map((c) => (
+                        <option key={c.id} value={c.id}>
+                          {c.name}
+                          {taken.has(c.id) ? " (već na popisu)" : ""}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
               </div>
               <div className="orow__qty qty" role="group" aria-label={`Količina, ${label(i).toLowerCase()}`}>
                 <button
@@ -114,7 +125,7 @@ export function OrderItems({ rows, setRows, errors, preferGroup }: Props) {
                   name={`qty-${r.key}`}
                   inputMode="numeric"
                   autoComplete="off"
-                  aria-label={name ? `Količina: ${name}` : "Količina"}
+                  aria-label={item ? `Količina: ${item.name}` : "Količina"}
                   value={r.qty}
                   maxLength={2}
                   onChange={(ev) => update(r.key, { qty: ev.target.value.replace(/\D/g, "").slice(0, 2) })}
@@ -139,7 +150,7 @@ export function OrderItems({ rows, setRows, errors, preferGroup }: Props) {
                   <button
                     type="button"
                     className="orow__x"
-                    aria-label={`Ukloni ${name || `${label(i).toLowerCase()} (prazan red)`}`}
+                    aria-label={`Ukloni ${item?.name ?? `${label(i).toLowerCase()} (prazan red)`}`}
                     onClick={() => remove(i)}
                   >
                     <span aria-hidden="true">×</span>
@@ -156,7 +167,7 @@ export function OrderItems({ rows, setRows, errors, preferGroup }: Props) {
         })}
       </ul>
       {rows.length < MAX_ROWS ? (
-        <button type="button" ref={addRef} className="orderlist__add" onClick={add}>
+        <button type="button" className="orderlist__add" onClick={add}>
           <span aria-hidden="true">+</span> Dodaj još proizvod
         </button>
       ) : (

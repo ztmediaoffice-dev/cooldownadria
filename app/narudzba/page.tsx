@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ proizvod?: string }> }) {
   const { proizvod } = await searchParams;
-  // ?proizvod=<naziv> popunjava prvi red; PARTS_OPTION otvara izbornik na pojedinačnim dijelovima.
+  // ?proizvod=<naziv> popunjava prvi red; PARTS_OPTION mijenja naslov i uvod (dijelovi).
   const item = proizvod ? catalogByName(proizvod) : undefined;
   const parts = proizvod === PARTS_OPTION;
   return (
@@ -52,7 +52,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
               Radije pišete? <a className="textlink" href={`mailto:${SITE.email}`}>{SITE.email}</a>
             </p>
           </div>
-          <InquiryForm mode="narudzba" defaultItems={item ? [item.id] : undefined} partsFirst={parts} />
+          <InquiryForm mode="narudzba" defaultItems={item ? [item.id] : undefined} />
         </div>
       </section>
     </div>

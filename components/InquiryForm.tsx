@@ -28,14 +28,11 @@ const ORG_TYPES = [
 export function InquiryForm({
   mode,
   defaultItems,
-  partsFirst,
   defaultType,
 }: {
   mode: Mode;
   /** Narudžba: id proizvoda za prvi red (iz ?proizvod=). */
   defaultItems?: string[];
-  /** Narudžba: izbornik se otvara na grupi pojedinačnih dijelova. */
-  partsFirst?: boolean;
   defaultType?: string;
 }) {
   const router = useRouter();
@@ -87,7 +84,7 @@ export function InquiryForm({
     const form = ev.currentTarget;
     const fd = new FormData(form);
     const data: Record<string, unknown> = Object.fromEntries(
-      Array.from(fd.entries()).filter(([k]) => !k.startsWith("qty-")),
+      Array.from(fd.entries()).filter(([k]) => !k.startsWith("qty-") && !k.startsWith("product-")),
     );
     if (mode === "narudzba") {
       data.items = rows.map(({ id, qty }) => ({ id, qty }));
@@ -163,7 +160,7 @@ export function InquiryForm({
       {mode === "narudzba" && (
         <fieldset className="field">
           <legend>Proizvodi {req}</legend>
-          <OrderItems rows={rows} setRows={setRows} errors={rowErrors} preferGroup={partsFirst ? "dio" : undefined} />
+          <OrderItems rows={rows} setRows={setRows} errors={rowErrors} />
           <label className="consent orderlist__advice">
             <input
               type="checkbox"

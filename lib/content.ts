@@ -78,7 +78,7 @@ export const SINGLE_ITEMS = [
 ];
 
 // Link „Upit za pojedinačne dijelove” (/narudzba?proizvod=…): isti obrazac, prazan prvi red,
-// a izbornik se otvara na grupi dijelova.
+// naslov i uvod za dijelove.
 export const PARTS_OPTION = "Pojedinačni dijelovi";
 
 // Katalog za narudžbu s više stavki (17.11.2026.). Nazivi su isti kao u PRODUCTS i SINGLE_ITEMS,
