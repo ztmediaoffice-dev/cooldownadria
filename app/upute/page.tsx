@@ -45,8 +45,8 @@ export default function Page() {
               <dd>Koliko god treba. Nakon operacije 2 do 3 puta dnevno. Moguće i preko noći.</dd>
             </div>
             <div>
-              <dt>Svježe rane</dt>
-              <dd>Prije primjene prekrijte ih folijom.</dd>
+              <dt>Rane i ekcem</dt>
+              <dd>Otvorene rane, ogrebotine, svježe ožiljke i ekcem prije primjene prekrijte folijom (npr. OpSite) ili zavojem. Cool Down ne smije izravno dodirivati ranu.</dd>
             </div>
           </dl>
         </div>

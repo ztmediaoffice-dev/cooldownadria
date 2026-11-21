@@ -199,7 +199,7 @@ export const APPLICATIONS: Application[] = [
     body: [
       "Proizvođač navodi primjenu u ortopediji odmah nakon operacije i tijekom rehabilitacije. Studija koju navodi provedena je na pacijentima nakon operacije prednjeg križnog ligamenta. U tom razdoblju hladi se 2 do 3 puta dnevno.",
       "Pacijent sam stavlja i skida zavoj. Zavoj ostaje na mjestu i ne ograničava pokrete, pa se hlađenje uklapa u svakodnevicu.",
-      "Svježe rane se prije primjene prekriju folijom. Cool Down se ne stavlja na otvorenu ranu.",
+      "Rana od operacije i svjež ožiljak prije hlađenja se prekriju folijom (npr. OpSite), tako da zavoj ne dodiruje ranu. Cool Down se nikad ne stavlja izravno na otvorenu ranu.",
     ],
     recommended: "professional-set",
     seoTitle: "Hladni oblog nakon operacije, bez leda",
@@ -345,8 +345,7 @@ export const REFERENCES = {
 
 export const SAFETY = {
   contraindications: [
-    "otvorenih rana",
-    "ekcema",
+    "otvorenih rana, ogrebotina, svježih ožiljaka i ekcema, osim preko folije ili zavoja",
     "trudnoće i dojenja",
     "dojenčadi i djece lakše od 10 kg",
   ],
@@ -386,7 +385,7 @@ export const FAQ = [
   {
     id: "kontraindikacije",
     q: "Kada se ne smije koristiti?",
-    a: "Na otvorenim ranama i ekcemu, u trudnoći i dojenju te kod dojenčadi i djece lakše od 10 kg.",
+    a: "U trudnoći i dojenju te kod dojenčadi i djece lakše od 10 kg. Na otvorene rane, ogrebotine, svježe ožiljke i ekcem ne stavlja se izravno, nego samo preko folije ili zavoja.",
   },
   {
     id: "sastav",
