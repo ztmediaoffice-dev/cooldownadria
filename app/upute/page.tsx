@@ -16,7 +16,7 @@ export default function Page() {
     <div className="page-calm page-upute">
       <PageHero
         crumbs={[{ label: "Upute" }]}
-        title="Upute za primjenu"
+        title="Kako se stavlja hladni oblog"
         lead="Sažetak uputa proizvođača. Prije prve primjene pročitajte upute iz pakiranja."
       >
         <p className="mt-s">
@@ -33,24 +33,12 @@ export default function Page() {
       <section className="sect sect--frost">
         <div className="wrap split">
           <div>
-            <h2 className="h2">Omjer, trajanje i ponavljanje</h2>
+            <h2 className="h2">Trajanje i ponavljanje</h2>
           </div>
           <dl className="factlist">
             <div>
-              <dt>Omjer</dt>
-              <dd>ICE FLUID i voda u omjeru 1 : 5.</dd>
-            </div>
-            <div>
-              <dt>Zavoj</dt>
-              <dd>Pamučni zavoj se natopi, lagano iscijedi i stavi u jednom sloju, u smjeru prema srcu.</dd>
-            </div>
-            <div>
-              <dt>Fiksiranje</dt>
-              <dd>Preko pamučnog zavoja ide fiksirni zavoj.</dd>
-            </div>
-            <div>
               <dt>Trajanje</dt>
-              <dd>Hladni oblog se drži optimalno 2 sata. Zavoj hladi 2 do 3 sata, dok se ne osuši.</dd>
+              <dd>Optimalno je hladni oblog držati 2 sata. Zavoj hladi 2 do 3 sata, dok se ne osuši.</dd>
             </div>
             <div>
               <dt>Ponavljanje</dt>
@@ -59,10 +47,6 @@ export default function Page() {
             <div>
               <dt>Svježe rane</dt>
               <dd>Prije primjene prekrijte ih folijom.</dd>
-            </div>
-            <div>
-              <dt>Čuvanje</dt>
-              <dd>Na sobnoj temperaturi, zaštićeno od topline.</dd>
             </div>
           </dl>
         </div>

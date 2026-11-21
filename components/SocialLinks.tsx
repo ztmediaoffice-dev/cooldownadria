@@ -11,7 +11,7 @@ const PATHS: Record<(typeof SOCIAL)[number]["id"], string> = {
 
 export function SocialLinks({ className = "social" }: { className?: string }) {
   return (
-    <ul className={className} aria-label="Cool Down Adria na mrežama">
+    <ul className={className} aria-label="Cooldown Adria na mrežama">
       {SOCIAL.map((s) => (
         <li key={s.id}>
           <a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} (otvara se u novoj kartici)`}>

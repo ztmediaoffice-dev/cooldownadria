@@ -249,7 +249,7 @@ export function InquiryForm({
           required={mode === "kontakt" || undefined}
           placeholder={
             mode === "narudzba"
-                ? "Na primjer: za što vam treba, adresa za dostavu ili pitanje."
+                ? "Na primjer: za što vam je potreban, adresa za dostavu ili pitanje."
                 : mode === "zahtjev"
                   ? "Na primjer: broj pacijenata ili sportaša, termin koji vam odgovara."
                   : ""

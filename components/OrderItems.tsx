@@ -168,7 +168,7 @@ export function OrderItems({ rows, setRows, errors }: Props) {
       </ul>
       {rows.length < MAX_ROWS ? (
         <button type="button" className="orderlist__add" onClick={add}>
-          <span aria-hidden="true">+</span> Dodaj još proizvod
+          <span aria-hidden="true">+</span> Dodajte još jedan proizvod
         </button>
       ) : (
         <p className="field__hint">Najviše {MAX_ROWS} stavki. Za više napišite u napomenu.</p>

@@ -25,14 +25,14 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ v
           {/* Opis prati izabranu vrstu u obrascu (CSS :has); bez podrške prikazuje se opis demonstracije. */}
           <div className="aside-card next">
             <p className="next__item next__item--demonstracija">
-              <strong>Što slijedi:</strong> javimo se da dogovorimo termin. Demonstracija je kod vas, u ordinaciji,
+              <strong>Što slijedi:</strong> javit ćemo vam se da dogovorimo termin. Demonstracija je kod vas, u ordinaciji,
               klubu ili ljekarni.
             </p>
             <p className="next__item next__item--uzorak">
-              <strong>Što slijedi:</strong> javimo se da dogovorimo pojedinosti oko uzorka.
+              <strong>Što slijedi:</strong> javit ćemo vam se da dogovorimo pojedinosti o uzorku.
             </p>
             <p className="next__item next__item--ponuda">
-              <strong>Što slijedi:</strong> javimo se da razjasnimo što vam treba i dogovorimo pojedinosti ponude.
+              <strong>Što slijedi:</strong> javit ćemo vam se da razjasnimo što vam treba i dogovorimo pojedinosti ponude.
             </p>
           </div>
           <InquiryForm mode="zahtjev" defaultType={vrsta && TYPES.includes(vrsta) ? vrsta : undefined} />

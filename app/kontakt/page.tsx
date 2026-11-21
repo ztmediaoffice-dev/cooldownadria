@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Kontakt",
   // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
   description:
-    "Kontakt Cooldown Adria, generalnog distributera Cool Down za Hrvatsku i Sloveniju. Pitanja o proizvodu, narudžbi ili suradnji: info@cooldownadria.com.",
+    "Kontakt: Cooldown Adria, generalni distributer Cool Down AG za Hrvatsku i Sloveniju. Pitanja o proizvodu, narudžbi ili suradnji: info@cooldownadria.com.",
   ...pageUrls("/kontakt"),
 };
 

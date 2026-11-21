@@ -18,7 +18,7 @@ export function ProductChooser() {
   return (
     <div>
       <fieldset className="chooser">
-        <legend>Za što vam treba?</legend>
+        <legend>Za što vam je potreban?</legend>
         <div className="segctl">
           {NEEDS.map((n) => (
             <label key={n.id}>

@@ -5,7 +5,6 @@ import {
   Benefits,
   Closing,
   Faq,
-  References,
   SectHead,
   SportProof,
 } from "@/components/Sections";
@@ -28,7 +27,7 @@ export const metadata: Metadata = {
 
 const LOGOS = [
   { mh: 34, file: "swiss-cycling", name: "Swiss Cycling", w: 480, h: 184 },
-  { mh: 46, file: "hockey-deutschland", name: "Njemačka hokejaška reprezentacija (Deutscher Hockey-Bund)", w: 365, h: 200 },
+  { mh: 46, file: "hockey-deutschland", name: "Njemački hokejaški savez (Deutscher Hockey-Bund)", w: 365, h: 200 },
   { mh: 44, file: "thoemus-maxon", name: "Thömus maxon", w: 480, h: 197 },
   { mh: 34, file: "scott-sram", name: "SCOTT-SRAM MTB", w: 480, h: 124 },
   { mh: 54, file: "spital-muri", name: "Spital Muri", w: 239, h: 200 },
@@ -148,7 +147,7 @@ export default function Home() {
           <div className="path__panel">
             <p className="path__who">Za fizioterapeute, klubove, klinike i ljekarne</p>
             <p className="path__title">Hlađenje koje pacijent nastavlja kod kuće</p>
-            <p className="path__text">Dolazimo na demonstraciju u vašu ordinaciju ili klub i zajedno biramo model suradnje.</p>
+            <p className="path__text">Demonstraciju održavamo u vašoj ordinaciji ili klubu i zajedno biramo model suradnje.</p>
             <div className="actions">
               <span className="btn">Zatražite demonstraciju</span>
             </div>
@@ -162,7 +161,7 @@ export default function Home() {
           <SectHead
             id="koraci"
             title="Kako se stavlja: šest koraka"
-            lead="ICE FLUID se miješa s vodom. Pamučni zavoj za hlađenje se natopi i omota, a preko njega ide fiksirni zavoj."
+            lead="Postupak je isti za koljeno, gležanj i rame. Trebaju vam ICE FLUID, voda, pamučni zavoj za hlađenje i fiksirni zavoj."
           />
           <StepPlayer />
           <div className="actions mt-m">
@@ -179,7 +178,9 @@ export default function Home() {
           <h2 className="sr-only" id="primjena">
             Hladni oblozi za koljeno, gležanj i rame nakon operacije, ozljeda i napora
           </h2>
-          <div className="uses">
+          {/* 21.11.2026.: na početnoj tri primjene stoje u jednom redu (kraća stranica);
+              veliki cik-cak raspored ostaje na /primjena. */}
+          <div className="uses uses--row">
             {APPLICATIONS.map((a) => (
               <Link key={a.slug} href={`/primjena/${a.slug}`} className="use">
                 <div className="use__img">
@@ -187,7 +188,7 @@ export default function Home() {
                     src={a.image}
                     alt=""
                     fill
-                    sizes="(max-width: 820px) 100vw, 58vw"
+                    sizes="(max-width: 820px) 40vw, 30vw"
                     style={{ objectPosition: a.position }}
                   />
                 </div>
@@ -211,7 +212,7 @@ export default function Home() {
               Zašto ne led
             </h2>
             <p className="curve-sect__lead">
-              Led hladi prejako i prekratko. Cool Down hladi umjereno, ali dugo, i to je cijela razlika.
+              Led hladi prejako i prekratko, a Cool Down umjereno i dugo.
             </p>
           </div>
           <TempCurve />
@@ -226,13 +227,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. Vrhunski sport i reference */}
+      {/* 9. Vrhunski sport. Popis klinika i klubova uklonjen je s početne 21.11.2026., jer ista imena
+          već nose logotipi ispod heroja; puni popis je na /o-nama i /za-partnere. */}
       <section className="sect sect--refs" aria-label="Reference">
         <div className="wrap">
           <SportProof />
-          <div className="refs-wrap">
-            <References title="Klinike i klubovi" lead={null} skipSportPhotos />
-          </div>
         </div>
       </section>
 
@@ -249,7 +248,7 @@ export default function Home() {
               </Link>
             </p>
           </div>
-          <Faq ids={["led", "trajanje", "preko-noci", "kontraindikacije", "odabir-seta"]} />
+          <Faq ids={["gel", "trajanje", "preko-noci", "kontraindikacije", "odabir-seta"]} />
         </div>
       </section>
 

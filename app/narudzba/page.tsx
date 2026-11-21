@@ -34,7 +34,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
         <div className="wrap split">
           <div className="aside-card">
             <p>
-              <strong>Što slijedi:</strong> pregledamo upit i javimo se e-mailom ili telefonom s cijenom i dostavom.
+              <strong>Što slijedi:</strong> pregledat ćemo upit i javiti vam se e-mailom ili telefonom.
             </p>
             <p>{SITE.delivery}.</p>
             {SITE.whatsapp ? (

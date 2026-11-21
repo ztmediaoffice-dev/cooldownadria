@@ -39,7 +39,7 @@ export const PRODUCTS: Product[] = [
     slug: "first-aid-set",
     name: "FIRST AID SET",
     short: "Za torbu, kuću i prvu pomoć na terenu.",
-    forWhom: "Za kućnu ljekarnu, sportsku torbu i prvu pomoć nakon ozljede.",
+    forWhom: "Za kućnu ljekarnu, sportsku torbu i prvu pomoć kod uganuća ili udarca.",
     image: "/img/proizvodi/first-aid-set.jpg",
     imageAlt: "FIRST AID SET: boca ICE FLUID-a 100 ml, posuda, pamučni i fiksirni zavoj",
     contents: [
@@ -51,12 +51,12 @@ export const PRODUCTS: Product[] = [
     uses: "oko 15 primjena",
     seoTitle: "Cool Down FIRST AID SET za prvu pomoć",
     seoDescription:
-      "Hladni oblog za kućnu ljekarnu, sportsku torbu i prvu pomoć nakon ozljede: ICE FLUID 100 ml (oko 15 primjena), pamučni i fiksirni zavoj te posuda.",
+      "Hladni oblog za kućnu ljekarnu, sportsku torbu i prvu pomoć kod uganuća: ICE FLUID 100 ml (oko 15 primjena), pamučni i fiksirni zavoj te posuda.",
   },
   {
     slug: "fix-aid",
     name: "FIX AID",
-    short: "Gotov natopljeni zavoj. Otvori, omotaj, gotovo.",
+    short: "Bez miješanja. Otvori, omotaj, gotovo.",
     forWhom: "Kad nema vremena za miješanje: na terenu, u autu, na putu.",
     image: "/img/proizvodi/fix-aid.jpg",
     imageAlt: "FIX AID: vrećica s gotovim natopljenim zavojem",
@@ -192,32 +192,32 @@ export const APPLICATIONS: Application[] = [
   {
     slug: "nakon-operativnih-zahvata",
     title: "Nakon operativnih zahvata",
-    lead: "Hlađenje koje pacijent može nositi kod kuće, bez leda iz zamrzivača i bez straha od ozeblina.",
+    lead: "Oblog koji pacijent može nositi kod kuće, bez leda iz zamrzivača i bez straha od ozeblina.",
     image: "/img/foto/nakon-operacije.jpg",
-    imageAlt: "Osoba s ortozom na koljenu hoda uz hodalicu.",
+    imageAlt: "Osoba s ortozom na koljenu hoda s hodalicom.",
     position: "62% 60%",
     body: [
-      "Proizvođač navodi primjenu u ortopediji odmah nakon operacije i tijekom rehabilitacije. Studija proizvođača rađena je nakon operacije koljena (prednji križni ligament). Nakon operacije hladi se 2 do 3 puta dnevno.",
+      "Proizvođač navodi primjenu u ortopediji odmah nakon operacije i tijekom rehabilitacije. Studija koju navodi provedena je na pacijentima nakon operacije prednjeg križnog ligamenta. U tom razdoblju hladi se 2 do 3 puta dnevno.",
       "Pacijent sam stavlja i skida zavoj. Zavoj ostaje na mjestu i ne ograničava pokrete, pa se hlađenje uklapa u svakodnevicu.",
-      "Svježe rane se prije primjene prekriju folijom. Na otvorenu ranu Cool Down se ne stavlja.",
+      "Svježe rane se prije primjene prekriju folijom. Cool Down se ne stavlja na otvorenu ranu.",
     ],
     recommended: "professional-set",
     seoTitle: "Hladni oblog nakon operacije, bez leda",
     seoDescription:
-      "Hladni oblog koji pacijent nakon operacije nosi kod kuće, bez leda iz zamrzivača i bez ozeblina. Hladi na 7 do 10 °C. Nakon operacije hladi se 2 do 3 puta dnevno.",
+      "Hladni oblog koji pacijent nakon operacije nosi kod kuće, bez leda iz zamrzivača i bez ozeblina. Hladi na 7 do 10 °C, a stavlja se 2 do 3 puta dnevno.",
     bodyTitle: "Hlađenje nakon operacije, kod kuće",
   },
   {
     slug: "nakon-ozljeda",
     title: "Nakon ozljeda",
-    lead: "Uganuće gležnja ili zgloba, nagnječenje, istegnuće ili tupa ozljeda: hladni oblog je spreman odmah, na terenu ili kod kuće.",
+    lead: "Uganuće gležnja ili drugog zgloba, nagnječenje, istegnuće ili tupa ozljeda: hladni oblog je spreman odmah, na terenu ili kod kuće.",
     image: "/img/foto/nakon-ozljede.jpg",
     imageAlt: "Sportaš sjedi na atletskoj stazi, a druga osoba mu pridržava koljeno.",
     position: "30% 50%",
     body: [
-      "Indikacije prema proizvođaču su uganuća, nagnječenja, tupe ozljede i istegnuća udova.",
-      "ICE FLUID ne treba hladnjak ni zamrzivač, pa je hladni oblog pri ruci i kad nakon udarca ili uganuća nastane oteklina. Pomiješa se s vodom, natopi zavoj i omota. FIX AID je već natopljen.",
-      "Zavoj hladi na 7 do 10 °C i ne ide u minus, pa ne stvara ozebline kao led.",
+      "Sve su to indikacije koje proizvođač navodi za ozljede udova.",
+      "ICE FLUID ne treba hladnjak ni zamrzivač, pa je hladni oblog za gležanj ili koljeno pri ruci i kad nakon udarca ili uganuća nastane oteklina. Dovoljno ga je pomiješati s vodom, natopiti njime zavoj i omotati zglob. FIX AID je već natopljen.",
+      "Zavoj hladi na 7 do 10 °C i, za razliku od leda, ne stvara ozebline.",
     ],
     recommended: "first-aid-set",
     seoTitle: "Hladni oblog za uganuće gležnja i ozljede",
@@ -233,7 +233,7 @@ export const APPLICATIONS: Application[] = [
     imageAlt: "Ruke obuhvaćaju list noge.",
     position: "50% 40%",
     body: [
-      "Proizvođač navodi regeneraciju mišića prije i nakon natjecanja kao jednu od primjena za sportaše i fizioterapeute.",
+      "Tu primjenu proizvođač navodi za sportaše i fizioterapeute.",
       "Zavoj se nosi 2 sata i duže i ne ograničava kretanje. Sportaš se može vratiti u autobus, na sastanak ili kući.",
       "Jedna boca od 250 ml dovoljna je za oko 40 primjena, što je važno za klubove s puno igrača.",
     ],
@@ -241,14 +241,14 @@ export const APPLICATIONS: Application[] = [
     seoTitle: "Hladni oblozi za sportaše nakon napora",
     seoDescription:
       "Hladni oblog za sportaše i klubove, u svlačionici ili kod kuće. Nosi se 2 sata i duže i ne ograničava kretanje. Boca od 250 ml dovoljna je za oko 40 primjena.",
-    bodyTitle: "Za sportaše i klubove",
+    bodyTitle: "Hladni oblozi za sportaše i klubove",
   },
 ];
 
 export const BENEFITS = [
   {
     title: "Ne stvara ozebline",
-    text: "Hladi na 7 do 10 °C i ne ide u minus. Led pada prema 0 °C i zato se mora skidati.",
+    text: "Hladi na 7 do 10 °C. Led pada prema 0 °C i zato se mora skidati.",
     source: false,
   },
   {
@@ -258,12 +258,14 @@ export const BENEFITS = [
   },
   {
     title: "Brži oporavak",
-    text: "Prema studiji proizvođača, nakon operacije bila je potrebna manja potrošnja lijekova protiv bolova.",
+    // 21.11.2026.: oslanja se samo na statistički značajne nalaze ACL studije (PMC6579562, vidi brief, stavka 7).
+    // Nalaz o lijekovima protiv bolova (nije značajan) ostaje samo u pregledu studije na /kako-djeluje.
+    text: "Prema studiji koju navodi proizvođač, 30 dana nakon operacije koljena mišićni presjek uz Cool Down nije se značajno smanjio, a uz hladni paket i bez hlađenja jest.",
     source: true,
   },
   {
     title: "Bolja regeneracija tkiva",
-    text: "Prema studiji proizvođača, mišićni presjek nakon operacije nije se značajno smanjio, a nakon 90 dana statistički je značajno porastao.",
+    text: "Nakon 90 dana mišićni presjek uz Cool Down statistički je značajno porastao, jedini od tri skupine u istoj studiji.",
     source: true,
   },
 ];
@@ -284,33 +286,33 @@ export const STEPS = [
   { img: "/img/koraci/korak-2.png", img3d: "/img/koraci-3d/korak-2.jpg", text: "Dodajte vodu u omjeru 1 : 5." },
   { img: "/img/koraci/korak-3.png", img3d: "/img/koraci-3d/korak-3.jpg", text: "Natopite pamučni zavoj." },
   { img: "/img/koraci/korak-4.png", img3d: "/img/koraci-3d/korak-4-cijedenje.jpg", text: "Lagano ga iscijedite." },
-  { img: "/img/koraci/korak-5.png", img3d: "/img/koraci-3d/korak-5.jpg", text: "Omotajte u jednom sloju, prema srcu." },
+  { img: "/img/koraci/korak-5.png", img3d: "/img/koraci-3d/korak-5.jpg", text: "Omotajte njime zglob u jednom sloju, prema srcu." },
   { img: "/img/koraci/korak-6.png", img3d: "/img/koraci-3d/korak-6.jpg", text: "Prekrijte fiksirnim zavojem." },
 ];
 
 export const PARTNER_SEGMENTS = [
   {
     title: "Fizioterapeuti i ordinacije",
-    text: "Hlađenje u tretmanu i nakon njega, koje pacijent nastavlja kod kuće.",
+    text: "Hlađenje u tretmanu, a nakon njega i kod kuće.",
   },
   {
     title: "Sportski klubovi",
-    text: "Spremno u torbi bez leda i hladnjaka. Jedna boca za oko 40 primjena.",
+    text: "Spreman u torbi, bez leda i hladnjaka. Jedna boca za oko 40 primjena.",
   },
   {
     title: "Ljekarne i veledrogerije",
-    text: "Medicinski proizvod iz Švicarske, nov na hrvatskom tržištu.",
+    text: "Švicarski medicinski proizvod za kućnu ljekarnu i prvu pomoć.",
   },
   {
     title: "Teretane i poslovni korisnici",
-    text: "Prva pomoć i regeneracija za članove i zaposlene.",
+    text: "Prva pomoć i regeneracija za članove i zaposlenike.",
   },
 ];
 
 export const PARTNER_MODELS = [
   {
     title: "Koristite ga u tretmanu",
-    text: "Cool Down postaje dio vaše terapije. Pacijent osjeti razliku već u ordinaciji.",
+    text: "Cool Down postaje dio vaše terapije, a pacijent ga upozna već u ordinaciji.",
   },
   {
     title: "Prodajete ga za kućnu uporabu",
@@ -325,7 +327,7 @@ export const PARTNER_MODELS = [
 export const REFERENCES = {
   sport: [
     "Thömus maxon",
-    "Njemačka hokejaška reprezentacija",
+    "Njemačka reprezentacija u hokeju na travi",
     "SCOTT-SRAM MTB",
     "Swiss Cycling",
     "HC Thurgau",
@@ -343,12 +345,12 @@ export const REFERENCES = {
 
 export const SAFETY = {
   contraindications: [
-    "otvorene rane",
-    "ekcem",
-    "trudnoća i dojenje",
-    "dojenčad i djeca ispod 10 kg",
+    "otvorenih rana",
+    "ekcema",
+    "trudnoće i dojenja",
+    "dojenčadi i djece lakše od 10 kg",
   ],
-  sideEffects: "Rijetko se mogu pojaviti lokalna iritacija kože ili kontaktna alergija.",
+  sideEffects: "Rijetko se može pojaviti lokalna iritacija kože ili kontaktna alergija.",
   composition: "Sadrži mentol i kamfor. Pamučni zavoj je 100 % pamuk, bez lateksa.",
   flammable:
     "ICE FLUID je lako zapaljiv. Čuvajte ga na sobnoj temperaturi, dalje od topline i otvorenog plamena.",
@@ -358,8 +360,8 @@ export const SAFETY = {
 export const FAQ = [
   {
     id: "led",
-    q: "Je li ovo isto kao led?",
-    a: "Nije. Led hladi naglo i pada prema 0 °C, pa se mora skidati. Cool Down hladi na 7 do 10 °C, ne ide u minus i ne stvara ozebline. Zato se može nositi 2 sata i duže.",
+    q: "Je li Cool Down isto što i led?",
+    a: "Nije. Led hladi naglo i pada prema 0 °C, pa se mora skidati. Cool Down hladi na 7 do 10 °C i ne stvara ozebline, pa se može nositi 2 sata i duže.",
   },
   {
     id: "trajanje",
@@ -378,13 +380,13 @@ export const FAQ = [
   },
   {
     id: "odabir-seta",
-    q: "Koji set da odaberem?",
-    a: "PROFESSIONAL SET je za ordinacije, klubove i oporavak nakon operacije, kad se hladi često. FIRST AID SET je za kuću i sportsku torbu. FIX AID je gotov zavoj za brzu primjenu. Ako niste sigurni, pošaljite upit i pomoći ćemo vam odabrati.",
+    q: "Koji set odabrati?",
+    a: "PROFESSIONAL SET je za ordinacije, klubove i oporavak nakon operacije, kad se hladi često. FIRST AID SET je za kuću i sportsku torbu. FIX AID je gotov zavoj za brzu primjenu. Ako niste sigurni, pošaljite upit.",
   },
   {
     id: "kontraindikacije",
     q: "Kada se ne smije koristiti?",
-    a: "Na otvorenim ranama i ekcemu, u trudnoći i dojenju te kod dojenčadi i djece ispod 10 kg.",
+    a: "Na otvorenim ranama i ekcemu, u trudnoći i dojenju te kod dojenčadi i djece lakše od 10 kg.",
   },
   {
     id: "sastav",
@@ -395,12 +397,12 @@ export const FAQ = [
     // Dodano 14.11.2026. (ljudi pretražuju „gel za hlađenje” i „cool down gel”); samo činjenice iz uputa.
     id: "gel",
     q: "Je li Cool Down gel?",
-    a: "Nije. ICE FLUID je tekući koncentrat. Pomiješa se s vodom u omjeru 1 : 5, njime se natopi pamučni zavoj, a preko njega ide fiksirni zavoj.",
+    a: "Nije. ICE FLUID je tekući koncentrat kojim se natapa pamučni zavoj, a preko njega ide fiksirni zavoj.",
   },
   {
     id: "kupnja",
-    q: "Gdje mogu kupiti Cool Down?",
-    a: "Pošaljite narudžbu ili upit preko ove stranice. Javit ćemo vam se s cijenom i uvjetima dostave.",
+    q: "Gdje mogu kupiti Cool Down i kolika je cijena?",
+    a: "Pošaljite narudžbu ili upit preko ove stranice. Cijenu i uvjete dostave šaljemo na upit.",
   },
 ];
 
@@ -414,8 +416,8 @@ export const SPORT = [
   },
   {
     img: "/img/sport/hokej-reprezentacija.jpg",
-    alt: "Njemačka hokejaška reprezentacija slavi s trofejem",
-    team: "Njemačka hokejaška reprezentacija",
+    alt: "Njemačka reprezentacija u hokeju na travi slavi sa svjetskim trofejem",
+    team: "Njemačka reprezentacija u hokeju na travi",
     note: "Svjetski prvaci 2023.",
     position: "50% 35%",
   },

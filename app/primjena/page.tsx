@@ -20,14 +20,14 @@ export default function Page() {
       <PageHero
         crumbs={[{ label: "Primjena" }]}
         title={
-          // Obavezna poruka; svaka fraza drži svoju točku, pa red ne počinje s „•”.
+          // Obavezna poruka. Od 21.11.2026. svaka fraza je u svom redu, bez točaka „•” na kraju reda.
           <>
-            <span className="title-part">Nakon operativnih zahvata •</span>{" "}
-            <span className="title-part">Nakon ozljeda •</span>{" "}
-            <span className="title-part">Nakon fizičkog napora</span>
+            <span className="title-part">Nakon operativnih zahvata,</span>{" "}
+            <span className="title-part">nakon ozljeda</span>{" "}
+            <span className="title-part">i nakon fizičkog napora.</span>
           </>
         }
-        lead="Hladni oblozi Cool Down koriste se u tri situacije. Indikacije prema proizvođaču su uganuća, nagnječenja, tupe ozljede i istegnuća udova. Za liječnike i fizioterapeute još i ortopedija nakon operacije, rehabilitacija, regeneracija mišića te bol kod reume i artritisa."
+        lead="Hladni oblozi Cool Down koriste se u tri situacije. Indikacije prema proizvođaču su uganuća, nagnječenja, tupe ozljede i istegnuća udova. Za liječnike i fizioterapeute proizvođač navodi i primjenu u ortopediji nakon operacije, u rehabilitaciji, za regeneraciju mišića te kod boli zbog reume i artritisa."
       />
       <section className="sect sect--tight-top sect--uses">
         <div className="wrap">

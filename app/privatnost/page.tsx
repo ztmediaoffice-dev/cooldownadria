@@ -3,7 +3,10 @@ import { pageUrls } from "@/lib/seo";
 import { PageHero } from "@/components/Sections";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Pravila privatnosti", ...pageUrls("/privatnost") };
+export const metadata: Metadata = {
+  title: "Pravila privatnosti",
+  description: "Kako Cooldown Adria prikuplja, koristi i čuva osobne podatke iz narudžbi, zahtjeva i poruka te koja su vaša prava.",
+  ...pageUrls("/privatnost") };
 
 export default function Page() {
   const company = SITE.company.name || "Cooldown Adria";
@@ -34,7 +37,7 @@ export default function Page() {
             </p>
             <h2>Koliko dugo</h2>
             <p>
-              Podatke čuvamo dok je to potrebno za obradu upita i poslovni odnos te koliko to zahtijevaju propisi.
+              Podatke čuvamo dok je to potrebno za obradu upita i poslovni odnos te onoliko koliko to zahtijevaju propisi.
             </p>
             <h2>Tko ih još vidi</h2>
             <p>
@@ -43,7 +46,7 @@ export default function Page() {
             </p>
             <h2>Vaša prava</h2>
             <p>
-              Možete zatražiti uvid, ispravak ili brisanje podataka, ograničenje obrade i prijenos podataka te povući
+              Možete zatražiti uvid u podatke, njihov ispravak ili brisanje, ograničenje obrade i prijenos podataka te povući
               privolu u bilo kojem trenutku. Pritužbu možete podnijeti Agenciji za zaštitu osobnih podataka (AZOP).
             </p>
           </div>

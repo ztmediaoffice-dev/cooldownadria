@@ -134,7 +134,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <div className="wrap split">
             <h2 className="h2">Otvori, omotaj, gotovo.</h2>
             <p className="lead">
-              FIX AID je već natopljen. Izvadite zavoj iz vrećice i omotajte ga u jednom sloju, prema srcu.
+              FIX AID je već natopljen. Izvadite zavoj iz vrećice i omotajte njime zglob u jednom sloju, prema srcu.
             </p>
           </div>
         </section>

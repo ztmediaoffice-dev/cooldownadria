@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
   title: "Led ili hladni oblog: kako djeluje Cool Down",
   description:
-    "Led pada prema 0 °C i mora se skidati. Cool Down hladi isparavanjem na 7 do 10 °C, bez ozeblina, 2 sata i duže. Usporedba s ledom i studija proizvođača.",
+    "Led pada prema 0 °C i mora se skidati. Cool Down hladi isparavanjem na 7 do 10 °C, bez ozeblina, 2 sata i duže. Usporedba s ledom i studija.",
   ...pageUrls("/kako-djeluje"),
 };
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 // grafikon, usporedba s ledom i studija kao vremenska linija. Tekstovi i tvrdnje su isti kao prije.
 // Lista „Četiri razloga” je uklonjena s ove stranice (ponavljala je tabelu i studiju); ostaje na početnoj.
 const FACTS = [
-  { value: "7 do 10 °C", label: "Na kojoj temperaturi", text: "Ne ide u minus, pa ne stvara ozebline." },
+  { value: "7 do 10 °C", label: "Na kojoj temperaturi", text: "Bez ozeblina, za razliku od leda." },
   {
     value: "2 sata i duže",
     label: "Koliko dugo",
@@ -42,8 +42,8 @@ export default function Page() {
             <div>
               <h1 className="page-title">Hladi dugo, a ne prejako.</h1>
               <p className="lead">
-                Pamučni zavoj natopljen ICE FLUID-om je hladni oblog koji hladi isparavanjem. Temperatura ostaje na 7
-                do 10 °C dok se zavoj ne osuši, pa se može nositi 2 sata i duže.
+                Pamučni zavoj natopljen ICE FLUID-om hladni je oblog koji djeluje isparavanjem. Zavoj hladi na 7 do
+                10 °C dok se ne osuši, pa ga možete nositi 2 sata i duže.
               </p>
               <div className="actions">
                 <Link href="/narudzba" className="btn">
@@ -57,7 +57,7 @@ export default function Page() {
             <div className="kd-hero__img">
               <Image
                 src="/img/foto/priprema.jpg"
-                alt="Pamučni zavoj se vadi iz posude s ICE FLUID-om, pored boce Cool Down"
+                alt="Pamučni zavoj se vadi iz posude s ICE FLUID-om, pokraj boce Cool Downa"
                 fill
                 priority
                 sizes="(max-width: 900px) 100vw, 45vw"
@@ -94,9 +94,9 @@ export default function Page() {
         <div className="wrap">
           <div className="curve-sect__head">
             <h2 className="curve-sect__title" id="krivulja-naslov">
-              Led naspram Cool Down
+              Led ili Cool Down
             </h2>
-            <p className="curve-sect__lead">Kako se temperatura obloge mijenja tijekom tri sata.</p>
+            <p className="curve-sect__lead">Kako se temperatura obloga mijenja tijekom tri sata.</p>
           </div>
           <TempCurve />
         </div>
@@ -112,7 +112,7 @@ export default function Page() {
                 Iste tvrdnje kao u tabeli i u pitanju „Je li ovo isto kao led?”. */}
             <p className="lead mt-s">
               Led na koljeno, na ozljedu ili na oteklinu hladi naglo i pada prema 0&nbsp;°C, pa se ledeni oblog mora
-              skidati. Cool Down hladi na 7 do 10&nbsp;°C i nosi se 2 sata i duže.
+              skidati. U tablici je usporedba hladnog obloga Cool Down i leda po pet svojstava.
             </p>
           </div>
           <Comparison />
@@ -123,11 +123,11 @@ export default function Page() {
         <div className="wrap">
           <div className="kd-head">
             <h2 className="h2" id="studija-naslov">
-              Studija proizvođača
+              Studija nakon operacije koljena
             </h2>
             <p className="lead">
-              Studija je usporedila Cool Down s hladnim paketom s ledom i s grupom bez hlađenja, kod pacijenata nakon
-              operacije prednjeg križnog ligamenta.
+              Engelhard, Hofer i Annaheim usporedili su tri skupine pacijenata nakon operacije prednjeg križnog
+              ligamenta: s Cool Downom, s hladnim paketom s ledom i bez hlađenja.
             </p>
           </div>
           <ol className="kd-study">
@@ -143,7 +143,7 @@ export default function Page() {
           <dl className="factlist kd-study__more">
             <div>
               <dt>Lijekovi protiv bolova</dt>
-              <dd>Potrošnja je bila manja.</dd>
+              <dd>Potrošnja je bila manja nego uz led ili bez hlađenja, ali razlika nije statistički značajna.</dd>
             </div>
           </dl>
           <div className="kd-study__source">
@@ -157,11 +157,11 @@ export default function Page() {
               >
                 Engelhard, Hofer i Annaheim, BMJ Open Sport &amp; Exercise Medicine, 2019
               </a>
-              . Randomizirana studija na 36 pacijenata, 12 u svakoj grupi.
+              . Randomizirana studija na 36 pacijenata, 12 u svakoj skupini.
             </p>
-            <p>Podaci su prema proizvođaču Cool Down AG. Detalje studije proizvođač daje na upit.</p>
+            <p>Podatke navodi proizvođač Cool Down AG, a detalje studije daje na upit.</p>
             <p>
-              Fizioterapeuti i liječnici mogu detalje studije{" "}
+              Fizioterapeuti i liječnici mogu ih{" "}
               <Link href="/zahtjev?vrsta=demonstracija" className="textlink">
                 zatražiti uz demonstraciju
               </Link>

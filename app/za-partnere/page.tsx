@@ -36,7 +36,7 @@ export default function Page() {
                   Zatražite demonstraciju
                 </Link>
                 <Link href="/kako-djeluje#studija" className="btn btn--ghost">
-                  Studija proizvođača
+                  Studija koju navodi proizvođač
                 </Link>
               </div>
             </div>
@@ -60,9 +60,9 @@ export default function Page() {
               Za koga
             </h2>
           </div>
-          <ul className="zp-cards">
+          <ul className="zp-rows">
             {PARTNER_SEGMENTS.map((s) => (
-              <li className="zp-card" key={s.title}>
+              <li className="zp-row" key={s.title}>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
               </li>
@@ -104,7 +104,7 @@ export default function Page() {
           </div>
           <dl className="zp-cards">
             {[
-              ["Demonstraciju", "Primjenu demonstriramo na licu mjesta, vama i vašem timu."],
+              ["Demonstraciju", "Primjenu prikazujemo uživo, vama i vašem timu."],
               ["Uzorak", "Isprobajte Cool Down u svom radu prije prve narudžbe."],
               ["Edukaciju", "Primjena, indikacije, kontraindikacije i kako proizvod objasniti pacijentu."],
               ["Materijale", "Upute i materijale za pacijente i prodajno mjesto na hrvatskom."],
@@ -134,14 +134,14 @@ export default function Page() {
             <p className="lead mt-s">Ili uzorak, ili poslovnu ponudu.</p>
             {/* Opis prati izabranu vrstu u obrascu (CSS :has, isto kao na /zahtjev). */}
             <p className="mt-s next__item next__item--demonstracija">
-              <strong>Što slijedi:</strong> javimo se da dogovorimo termin. Demonstracija je kod vas, u ordinaciji,
+              <strong>Što slijedi:</strong> javit ćemo vam se da dogovorimo termin. Demonstracija je kod vas, u ordinaciji,
               klubu ili ljekarni.
             </p>
             <p className="mt-s next__item next__item--uzorak">
-              <strong>Što slijedi:</strong> javimo se da dogovorimo pojedinosti oko uzorka.
+              <strong>Što slijedi:</strong> javit ćemo vam se da dogovorimo pojedinosti o uzorku.
             </p>
             <p className="mt-s next__item next__item--ponuda">
-              <strong>Što slijedi:</strong> javimo se da razjasnimo što vam treba i dogovorimo pojedinosti ponude.
+              <strong>Što slijedi:</strong> javit ćemo vam se da razjasnimo što vam treba i dogovorimo pojedinosti ponude.
             </p>
           </div>
           <InquiryForm mode="zahtjev" />

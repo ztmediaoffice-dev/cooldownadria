@@ -18,7 +18,7 @@ export default function Page() {
       <PageHero
         crumbs={[{ label: "Proizvodi" }]}
         title="Cool Down setovi i dijelovi"
-        lead="Svaki set sadrži ICE FLUID koncentrat i pamučni zavoj za hlađenje. Cijenu i uvjete dostave šaljemo na upit."
+        lead="PROFESSIONAL SET i FIRST AID SET sadrže koncentrat ICE FLUID i pamučni zavoj za hlađenje, a FIX AID je gotov hladni zavoj, već natopljen. Cijenu i uvjete dostave šaljemo na upit."
       />
       <section className="sect sect--tight-top">
         <div className="wrap">

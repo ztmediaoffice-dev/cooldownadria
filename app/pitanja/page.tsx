@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
   title: "Česta pitanja o hladnom oblogu Cool Down",
   description:
-    "Je li Cool Down isto kao led ili gel, koliko dugo se nosi hladni oblog, može li preko noći, koji set odabrati i kada se ne smije koristiti.",
+    "Je li Cool Down isto što i led ili gel, koliko dugo se nosi hladni oblog, može li preko noći, koji set odabrati i kada se ne smije koristiti.",
   ...pageUrls("/pitanja"),
 };
 

@@ -47,11 +47,11 @@ export function Advantages({ p }: { p: Product }) {
   const items = [
     { i: icon.ready, title: "Spreman odmah", text: "Bez prethodnog hlađenja, bez hladnjaka i zamrzivača." },
     { i: icon.constant, title: "Konstantno hlađenje", text: "Ujednačeno i dugotrajno, dok se zavoj ne osuši." },
-    { i: icon.simple, title: "Jednostavna primjena", text: "Mali rizik. Pacijent ga sam stavi i skine." },
+    { i: icon.simple, title: "Jednostavna primjena", text: "Pacijent ga sam stavlja i skida." },
     ...(p.uses
-      ? [{ i: icon.reuse, title: "Višekratna upotreba", text: `Jedna boca ICE FLUID-a dovoljna je za ${p.uses}.` }]
+      ? [{ i: icon.reuse, title: "Višekratna uporaba", text: `Jedna boca ICE FLUID-a dovoljna je za ${p.uses}.` }]
       : []),
-    { i: icon.move, title: "Bez ograničenja pokretljivosti", text: "Pokreti nisu ograničeni." },
+    { i: icon.move, title: "Bez ograničenja pokretljivosti", text: "Zavoj ostaje na mjestu dok se krećete." },
     { i: icon.natural, title: "Prirodno hlađenje", text: "Isparavanjem i aktivacijom receptora za hladnoću." },
   ];
   return (

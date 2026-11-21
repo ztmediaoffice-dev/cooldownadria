@@ -3,7 +3,10 @@ import { pageUrls } from "@/lib/seo";
 import { PageHero } from "@/components/Sections";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Impressum", ...pageUrls("/impressum") };
+export const metadata: Metadata = {
+  title: "Impressum",
+  description: "Impressum tvrtke COOL DOWN ADRIA d.o.o. iz Makarske: sjedište, OIB i kontakt generalnog distributera Cool Down AG za Hrvatsku i Sloveniju.",
+  ...pageUrls("/impressum") };
 
 const missing = "[podatak u pripremi]";
 

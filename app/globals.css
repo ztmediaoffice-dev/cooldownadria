@@ -1316,6 +1316,54 @@ ol {
     transform: none;
   }
 }
+/* Početna (21.11.2026.): tri primjene u jednom redu umjesto cik-caka. Na mobitelu slika
+   stoji lijevo od teksta, pa blok ostaje nizak. */
+.uses.uses--row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+  border-top: 2px solid var(--ink);
+  padding-top: clamp(24px, 3vw, 36px);
+}
+.uses--row .use,
+.uses--row .use:nth-child(even) {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  align-content: start;
+}
+.uses--row .use:nth-child(even) .use__img {
+  order: 0;
+}
+.uses--row .use__img {
+  aspect-ratio: 4 / 3;
+}
+.sect--uses .uses--row .use__title {
+  font-size: clamp(1.375rem, 1.1rem + 0.6vw, 1.625rem);
+  line-height: 1.15;
+}
+.uses--row .use__lead {
+  margin-top: 10px;
+}
+.uses--row .use .textlink {
+  margin-top: 14px;
+}
+@media (max-width: 820px) {
+  .uses.uses--row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .uses--row .use,
+  .uses--row .use:nth-child(even) {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 16px;
+  }
+  .uses--row .use__img {
+    aspect-ratio: 1;
+  }
+  .uses--row .use__lead {
+    font-size: var(--t-s);
+  }
+}
 
 /* Izbor seta na početnoj */
 .sect--products {
@@ -2783,6 +2831,9 @@ fieldset.field {
   display: inline-block;
   max-width: 100%;
 }
+.page-primjena-index .title-part {
+  display: block;
+}
 /* Sekcije iste (bijele) pozadine jedna ispod druge (Preporučeni set, Sigurnost, Ostale
    primjene): razmak daje donji padding prethodne sekcije, bez dodatnog gornjeg. */
 .page-primjena .sect + .sect--tight-top {
@@ -2824,11 +2875,19 @@ fieldset.field {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(16px, 2vw, 28px);
 }
+/* 21.11.2026.: brojke kao red podataka (stupci odvojeni linijom), ne kao kartice. */
+.kd-facts {
+  border-top: 2px solid var(--ink);
+  gap: 0;
+}
 .kd-fact {
-  background: #fff;
-  border-top: 3px solid var(--ice);
-  border-radius: 4px;
-  padding: 24px 24px 28px;
+  padding: 28px clamp(20px, 2.5vw, 40px) 8px;
+}
+.kd-fact:first-child {
+  padding-left: 0;
+}
+.kd-fact + .kd-fact {
+  border-left: 1px solid var(--rule);
 }
 .kd-fact dt {
   display: flex;
@@ -2906,6 +2965,14 @@ fieldset.field {
   .kd-facts,
   .kd-study {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .kd-fact,
+  .kd-fact:first-child {
+    padding: 22px 0;
+  }
+  .kd-fact + .kd-fact {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
   }
   .kd-study__item,
   .kd-study__item + .kd-study__item {
@@ -3022,6 +3089,39 @@ fieldset.field {
 }
 @media (max-width: 600px) {
   .zp-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* /za-partnere „Za koga” (21.11.2026.): redovi s naslovom lijevo i opisom desno, kao prednosti
+   na početnoj, da se dvije sekcije s karticama ne ponavljaju jedna za drugom. */
+.zp-rows {
+  list-style: none;
+  padding: 0;
+  border-top: 2px solid var(--ink);
+}
+.zp-row {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 8px 48px;
+  padding-block: clamp(18px, 2vw, 24px);
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+}
+.zp-row h3 {
+  font-size: clamp(1.25rem, 1.05rem + 0.6vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.zp-row p {
+  color: var(--steel);
+  line-height: 1.55;
+  max-width: 34em;
+}
+@media (max-width: 700px) {
+  .zp-row {
     grid-template-columns: minmax(0, 1fr);
   }
 }
@@ -3313,4 +3413,11 @@ fieldset.field {
   padding-right: 40px;
   cursor: pointer;
   text-overflow: ellipsis;
+}
+
+/* /o-nama hero (21.11.2026.) */
+.onama-fig figcaption {
+  margin-top: 10px;
+  font-size: var(--t-s);
+  color: var(--steel);
 }

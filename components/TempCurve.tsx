@@ -49,7 +49,7 @@ function Plot({ g, mobile, compact }: { g: Geo; mobile: boolean; compact: boolea
       aria-labelledby={`${id}-title ${id}-desc`}
       preserveAspectRatio="xMidYMid meet"
     >
-      <title id={`${id}-title`}>Led naspram Cool Down: temperatura obloga kroz vrijeme</title>
+      <title id={`${id}-title`}>Led ili Cool Down: temperatura obloga kroz vrijeme</title>
       <desc id={`${id}-desc`}>
         Led naglo pada prema 0 °C i brzo se zagrije. Cool Down hladi na 7 do 10 °C i drži tu temperaturu 2 sata i duže.
       </desc>
@@ -108,7 +108,7 @@ export function TempCurve({ animate = true, compact = false }: { animate?: boole
         </li>
       </ul>
       <figcaption className="note">
-        Ilustracija, nije mjerenje. Cool Down hladi na temperaturi od 7 do 10 °C i ne ide u minus, pa ne stvara ozebline.
+        Ilustracija, nije mjerenje.
       </figcaption>
     </figure>
   );

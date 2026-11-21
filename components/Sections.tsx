@@ -96,7 +96,7 @@ export function Comparison() {
   // stupac već dobiva iz zaglavlja (koje je na mobitelu samo vizualno skriveno).
   return (
     <table className="compare" role="table">
-      <caption className="sr-only">Usporedba Cool Down zavoja i leda ili gel obloge</caption>
+      <caption className="sr-only">Usporedba Cool Down zavoja i leda ili gel obloga</caption>
       <thead role="rowgroup">
         <tr role="row">
           <th scope="col" role="columnheader">
@@ -106,7 +106,7 @@ export function Comparison() {
             Cool Down
           </th>
           <th scope="col" role="columnheader" className="ice">
-            Led ili gel obloga
+            Led ili gel oblog
           </th>
         </tr>
       </thead>
@@ -124,7 +124,7 @@ export function Comparison() {
             </td>
             <td className="ice" role="cell">
               <span className="compare__lbl" aria-hidden="true">
-                Led ili gel obloga:{" "}
+                Led ili gel oblog:{" "}
               </span>
               {r.ice}
             </td>
@@ -406,7 +406,7 @@ export function SportProof() {
       <div className="sport__head">
         <h2 className="h2">Iz vrhunskog sporta</h2>
         <p className="lead">
-          Prema proizvođaču, Cool Down koriste svjetski prvaci i profesionalni timovi u Švicarskoj i Njemačkoj.
+          Koriste ga svjetski prvaci i profesionalni timovi u Švicarskoj i Njemačkoj, prema proizvođaču.
         </p>
       </div>
       <ul className="sport__grid">

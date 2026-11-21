@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { pageUrls } from "@/lib/seo";
 import { PageHero } from "@/components/Sections";
 
-export const metadata: Metadata = { title: "Kolačići", ...pageUrls("/kolacici") };
+export const metadata: Metadata = {
+  title: "Kolačići",
+  description: "Stranica Cooldown Adria ne koristi kolačiće za analitiku ni oglašavanje. Što pamtimo tijekom posjeta i kada se to briše.",
+  ...pageUrls("/kolacici") };
 
 export default function Page() {
   return (
@@ -13,8 +16,8 @@ export default function Page() {
           <div className="prose">
             <p>
               Stranica trenutno ne koristi kolačiće za analitiku ni oglašavanje. Tijekom posjeta u pregledniku pamtimo
-              samo izvor dolaska na stranicu, kako bismo znali s kojeg oglasa ili materijala je stigao upit. Taj podatak
-              se briše kad zatvorite preglednik.
+              samo izvor dolaska na stranicu, kako bismo znali s kojeg je oglasa ili materijala stigao upit. Taj se podatak
+              briše kad zatvorite preglednik.
             </p>
             <p>
               Ako uvedemo analitiku ili oglasne kolačiće, prije toga ćemo vas pitati za pristanak i ažurirati ovu

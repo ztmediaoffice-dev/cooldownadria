@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { pageUrls } from "@/lib/seo";
-import { Closing, PageHero, References } from "@/components/Sections";
+import Image from "next/image";
+import { Closing, Crumbs, References } from "@/components/Sections";
 
 export const metadata: Metadata = {
   // SEO tekstovi 14.11.2026. (SEO-KLJUCNE-RIJECI.md); bez en i em crtica.
@@ -13,11 +14,33 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="page-calm">
-      <PageHero
-        crumbs={[{ label: "O nama" }]}
-        title="Švicarski proizvod, lokalna podrška."
-        lead="Cooldown Adria je generalni distributer švicarskog proizvođača Cool Down AG za Hrvatsku i Sloveniju."
-      />
+      {/* 21.11.2026.: hero s fotografijom (ranije prazna desna polovina). Fotografija je referenca
+          proizvođača (dozvoljeno 14.11.2026.), a potpis kaže čija je. */}
+      <section className="page-hero kd-hero">
+        <div className="wrap">
+          <Crumbs items={[{ label: "O nama" }]} />
+          <div className="kd-hero__grid">
+            <div>
+              <h1 className="page-title">Švicarski proizvod, lokalna podrška.</h1>
+              <p className="lead">
+                Cooldown Adria je generalni distributer švicarskog proizvođača Cool Down AG za Hrvatsku i Sloveniju.
+              </p>
+            </div>
+            <figure className="onama-fig">
+              <div className="kd-hero__img">
+                <Image
+                  src="/img/sport/scott-sram.jpg"
+                  alt="SCOTT-SRAM MTB tim s biciklima u planinama"
+                  fill
+                  priority
+                  sizes="(max-width: 900px) 100vw, 45vw"
+                />
+              </div>
+              <figcaption>SCOTT-SRAM MTB, profesionalni tim koji prema proizvođaču koristi Cool Down.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
       <section className="sect sect--tight-top">
         <div className="wrap split">
           <div>
@@ -50,11 +73,11 @@ export default function Page() {
       <section className="sect sect--frost">
         <div className="wrap split">
           <div>
-            <h2 className="h2">Cooldown Adria</h2>
+            <h2 className="h2">Cool Down u Hrvatskoj i Sloveniji</h2>
           </div>
           <div className="prose">
             <p>
-              Za Hrvatsku i Sloveniju vodimo prodaju, demonstracije i podršku partnerima i kupcima. Za fizioterapeute,
+              U Hrvatskoj i Sloveniji prodajemo Cool Down i pomažemo partnerima i kupcima. Za fizioterapeute,
               klubove, klinike i ljekarne organiziramo demonstracije, a kupcima pomažemo odabrati pravi set.
             </p>
           </div>
